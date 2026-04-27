@@ -49,7 +49,8 @@
   .panel h2 { margin: 0 0 12px 0; font-size: 18px; color: var(--accent); }
   .panel .note { font-size: 12px; color: var(--muted); margin-top: 8px; font-style: italic; }
 
-  table.summary { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .summary-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table.summary { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 540px; }
   table.summary th, table.summary td {
     padding: 8px 10px; text-align: left; border-bottom: 1px solid #e6dcc6;
   }
@@ -149,6 +150,90 @@
     font-size: 12px; color: var(--muted);
   }
   footer a { color: var(--accent-2); }
+
+  /* ---------- Tablet (≤900px): tighter columns, smaller card min ---------- */
+  @media (max-width: 900px) {
+    main { padding: 16px; }
+    .grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+    .panel { padding: 14px 16px; }
+  }
+
+  /* ---------- Phone (≤640px): single-column, stacked filters, big touch targets ---------- */
+  @media (max-width: 640px) {
+    header { padding: 20px 16px; }
+    header h1 { font-size: 22px; letter-spacing: 0.5px; }
+    header .sub { font-size: 12px; line-height: 1.4; }
+    main { padding: 12px; }
+
+    .panel { padding: 12px 14px; margin-bottom: 14px; border-radius: 6px; }
+    .panel h2 { font-size: 16px; margin-bottom: 10px; }
+    .panel .note { font-size: 11px; }
+
+    /* Summary table: scrolls horizontally inside .summary-wrap, shrink font */
+    table.summary { font-size: 12px; }
+    table.summary th, table.summary td { padding: 6px 8px; }
+    table.summary th { font-size: 11px; letter-spacing: 0.4px; }
+
+    /* Controls: stack vertically, full-width children, min 44px touch targets */
+    .controls {
+      gap: 8px;
+      align-items: stretch;
+    }
+    .controls .label {
+      width: 100%;
+      margin-right: 0;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .filter-btn {
+      flex: 1 1 calc(50% - 4px);
+      min-height: 44px;
+      padding: 10px 12px;
+      font-size: 14px;
+      text-align: center;
+    }
+    .filter-btn .range { display: none; }
+    .search-input {
+      flex: 1 1 100%;
+      width: 100%;
+      min-height: 44px;
+      padding: 10px 12px;
+      font-size: 16px; /* 16px prevents iOS zoom on focus */
+    }
+    .count {
+      flex: 1 1 100%;
+      margin-left: 0;
+      text-align: center;
+      font-size: 12px;
+    }
+    .mode-row {
+      margin-top: 8px;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .mode-row label { display: inline-block; margin-right: 12px; }
+    #rangeHint { display: block; margin: 4px 0 0 0 !important; font-size: 11px; }
+
+    /* Cards: 1 column, tighter padding */
+    .grid { grid-template-columns: 1fr; gap: 10px; }
+    .card { padding: 14px 14px; gap: 6px; border-left-width: 4px; }
+    .card h3 { font-size: 16px; line-height: 1.3; }
+    .species { font-size: 11px; }
+    .dims, .bf { font-size: 12px; }
+    .notes { font-size: 12px; }
+    .price { font-size: 17px; }
+    .price-bf { font-size: 11px; }
+    .tier { font-size: 10px; padding: 3px 6px; }
+    .view-link { font-size: 12px; padding: 8px 12px; min-height: 36px; }
+
+    footer { padding: 16px 12px; font-size: 11px; }
+  }
+
+  /* ---------- Small phone (≤380px): one column filter buttons ---------- */
+  @media (max-width: 380px) {
+    .filter-btn { flex: 1 1 100%; }
+  }
 </style>
 </head>
 <body>
@@ -162,6 +247,7 @@
 
   <div class="panel">
     <h2>Average Price per Board Foot, by Wood Type</h2>
+    <div class="summary-wrap">
     <table class="summary" id="summaryTable">
       <thead>
         <tr>
@@ -176,6 +262,7 @@
       </thead>
       <tbody></tbody>
     </table>
+    </div>
     <p class="note">
       Board-foot (BF) = (Thickness × Width × Length, in inches) ÷ 144.
       Items missing a dimension or sold by the piece are excluded from BF averages.
