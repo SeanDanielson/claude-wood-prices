@@ -116,6 +116,29 @@ Open each product page to check for dimension info in the description; most
 items currently say "Drying — completion Fall 2027" with no dims, so set
 `T/W/L = null`.
 
+### Black Forest Sawmill — `https://blackforestsawmill.com`
+
+Newly tracked. Site structure has not been characterized yet — the first
+scheduled run that successfully reaches this domain should:
+
+1. Open the root URL and inspect navigation for a shop / store / inventory
+   page (common patterns: `/shop`, `/store`, `/inventory`, `/products`).
+2. Confirm the contact / about path and update `_meta.vendors.black_forest`
+   in `data/products.json` (`shopUrl`, `contactUrl`, `location`, `note`)
+   with the real values.
+3. Pick the closest extraction template from above:
+   - If it's a Wix-style single-page gallery → reuse the Tree Trunk
+     text-node walker.
+   - If it has dedicated `/product/...` pages → reuse the Bloom & Johnson
+     anchor collector.
+4. Tag scraped items with `"vendor": "black_forest"`.
+
+Until the structure is confirmed, treat this vendor like a blocked vendor:
+keep zero entries in `products` and add a `_meta.warnings` note explaining
+the pending characterization. The page will still render — the header
+blurb iterates `_meta.vendors` generically, and the new filter button
+simply shows zero results until real items land.
+
 ## Output
 
 After scraping, build the merged products array, write

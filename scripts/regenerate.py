@@ -61,6 +61,7 @@ TEMPLATE = r"""<!doctype html>
     --tag-high: #9a2a2a;
     --vendor-tt: #6e4a25;
     --vendor-bj: #2c5d6b;
+    --vendor-bf: #2f4d2a;
     --shadow: 0 2px 8px rgba(60, 40, 20, 0.10);
   }
   * { box-sizing: border-box; }
@@ -113,6 +114,7 @@ TEMPLATE = r"""<!doctype html>
   }
   .vendor-pill.tree_trunk { background: var(--vendor-tt); }
   .vendor-pill.bloom_johnson { background: var(--vendor-bj); }
+  .vendor-pill.black_forest { background: var(--vendor-bf); }
 
   .controls { display: flex; flex-wrap: wrap; gap: 10px 12px; align-items: center; }
   .controls .label { font-weight: bold; color: var(--accent); margin-right: 4px; }
@@ -127,6 +129,8 @@ TEMPLATE = r"""<!doctype html>
   .filter-btn.active { background: var(--accent); color: #fff; }
   .filter-btn.active.bj { background: var(--vendor-bj); border-color: var(--vendor-bj); }
   .filter-btn.bj { border-color: var(--vendor-bj); color: var(--vendor-bj); }
+  .filter-btn.active.bf { background: var(--vendor-bf); border-color: var(--vendor-bf); }
+  .filter-btn.bf { border-color: var(--vendor-bf); color: var(--vendor-bf); }
   .filter-btn .range { font-size: 11px; opacity: 0.75; margin-left: 6px; }
 
   .search-input {
@@ -156,6 +160,7 @@ TEMPLATE = r"""<!doctype html>
   }
   .card.tree_trunk { border-left-color: var(--vendor-tt); }
   .card.bloom_johnson { border-left-color: var(--vendor-bj); }
+  .card.black_forest { border-left-color: var(--vendor-bf); }
   .card h3 { margin: 0; font-size: 17px; color: var(--accent); }
   .species { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; }
   .dims { font-size: 13px; color: #4a3a28; font-family: "Courier New", monospace; }
@@ -320,6 +325,7 @@ TEMPLATE = r"""<!doctype html>
       <button class="filter-btn active" data-source="all">All</button>
       <button class="filter-btn" data-source="tree_trunk">Tree Trunk</button>
       <button class="filter-btn bj" data-source="bloom_johnson">Bloom &amp; Johnson</button>
+      <button class="filter-btn bf" data-source="black_forest">Black Forest</button>
     </div>
     <div class="row-divider"></div>
     <div class="controls">
@@ -445,7 +451,7 @@ const PAGE_DATA = JSON.parse(document.currentScript.previousElementSibling ? "{}
       const fmtBF = v => (v === 0 || v == null ? 'n/a' : v.toFixed(2));
       const vendorPills = r.vendors.map(v => {
         const name = (VENDORS[v] && VENDORS[v].name) || v;
-        const short = v === 'tree_trunk' ? 'TT' : v === 'bloom_johnson' ? 'B&J' : name;
+        const short = v === 'tree_trunk' ? 'TT' : v === 'bloom_johnson' ? 'B&J' : v === 'black_forest' ? 'BF' : name;
         return `<span class="vendor-pill ${v}">${short}</span>`;
       }).join('');
       tr.innerHTML = `
@@ -503,11 +509,11 @@ const PAGE_DATA = JSON.parse(document.currentScript.previousElementSibling ? "{}
       const tierClass = t ? `tier-${t}` : 'tier-na';
       const tierTxt = t ? tierLabel(t) : 'n/a';
       const vendorName = (VENDORS[p.vendor] && VENDORS[p.vendor].name) || p.vendor;
-      const linkLabel = p.vendor === 'bloom_johnson' ? 'View product' : 'View on shop';
+      const linkLabel = p.vendor === 'bloom_johnson' ? 'View product' : p.vendor === 'black_forest' ? 'View on site' : 'View on shop';
       const card = document.createElement('div');
       card.className = `card ${p.vendor}`;
       card.innerHTML = `
-        <div class="species">${p.species} <span class="vendor-pill ${p.vendor}">${p.vendor === 'tree_trunk' ? 'Tree Trunk' : 'B&J'}</span></div>
+        <div class="species">${p.species} <span class="vendor-pill ${p.vendor}">${p.vendor === 'tree_trunk' ? 'Tree Trunk' : p.vendor === 'bloom_johnson' ? 'B&J' : p.vendor === 'black_forest' ? 'Black Forest' : (VENDORS[p.vendor] && VENDORS[p.vendor].name) || p.vendor}</span></div>
         <h3>${p.name}</h3>
         <div class="dims">${p.dims}</div>
         <div class="bf">${bfStr}</div>

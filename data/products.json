@@ -15,6 +15,13 @@
         "shopUrl": "https://www.bloomandjohnson.com/",
         "contactUrl": "https://www.bloomandjohnson.com/contact",
         "note": "Per-item product pages with checkout. Slab inventory currently drying — completion Fall 2027."
+      },
+      "black_forest": {
+        "name": "Black Forest Sawmill",
+        "location": "TBD",
+        "shopUrl": "https://blackforestsawmill.com",
+        "contactUrl": "https://blackforestsawmill.com",
+        "note": "Newly tracked vendor — exact shop / contact paths and site structure to be confirmed on first scrape."
       }
     }
   },

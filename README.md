@@ -1,10 +1,11 @@
 # Wood Shop Curation
 
 A live, filterable catalog of slabs, boards, mantels, and finished pieces from
-two North Carolina mills:
+the following mills:
 
 - **The Tree Trunk Sawmill & Woodshop** (Westfield, NC) — small slabs, cookies, end-grain pieces, charcuterie boards.
 - **Bloom & Johnson Millworks** (Davidson, NC) — premium live-edge walnut slabs and reclaimed mantels.
+- **Black Forest Sawmill** — newly tracked; site structure / inventory pending first successful scrape.
 
 Each item is shown with dimensions, total price, and computed **price per board-foot**, with a per-wood-type summary table that updates as you filter.
 
