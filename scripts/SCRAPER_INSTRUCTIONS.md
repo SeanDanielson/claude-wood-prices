@@ -139,6 +139,68 @@ the pending characterization. The page will still render — the header
 blurb iterates `_meta.vendors` generically, and the new filter button
 simply shows zero results until real items land.
 
+### Facebook Marketplace — Charlotte, NC only
+
+Wired as the 4th source (`vendor: "fb_marketplace"`). **This tab is
+scoped to the Charlotte, NC area only** — the city slug `charlotte` plus
+a ~40-mile radius. Future runs MUST keep this scope; do not broaden it
+without an explicit user request. The exact scope lives at
+`_meta.vendors.fb_marketplace.scope` in `data/products.json` (`city`,
+`state`, `locationSlug`, `radiusMiles`) — read from there rather than
+hardcoding.
+
+**Unauthenticated scraping is fully blocked** —
+`https://www.facebook.com/marketplace/charlotte/`,
+`/marketplace/charlotte/search?query=…`, and
+`/marketplace/category/wood` all redirect to `/login` (HTTP 302), and
+the rendered HTML contains no listing data. The 4th-source tab is wired
+into the page; on each scheduled run, follow this sequence:
+
+1. **Detect a session**: look for a Netscape-format cookie jar at the
+   workspace root: `wood-shop/.fb-cookies` (gitignored, sibling of
+   `.gh-token`). If absent, leave the `fb_marketplace` listings empty,
+   ensure `_meta.warnings` still contains the `auth_required` entry, and
+   skip the rest of this section. Do **not** fabricate listings.
+2. **If the cookie jar exists**, load it via Chrome MCP (open a tab with
+   `https://www.facebook.com/`, then for each cookie line in the jar
+   inject it via `document.cookie = …` or, preferably, drive the browser
+   while the user has Facebook signed in in their normal Chrome profile —
+   the `Claude in Chrome` extension already runs in that profile).
+3. **Search for relevant listings — Charlotte only**: read the scope
+   block from `_meta.vendors.fb_marketplace.scope`. Visit
+   `https://www.facebook.com/marketplace/{locationSlug}/search?query=<q>&radius={radiusMiles}`
+   for each of these queries: `walnut slab`, `cherry slab`,
+   `live edge slab`, `lumber`, `mantel`. For each, scroll to lazy-load
+   (same scroll-then-walk pattern as Tree Trunk), then collect
+   `a[href*="/marketplace/item/"]` anchors and walk each anchor's
+   surrounding card text for title, price, location.
+4. **Validate each listing's location** against the scope: parse the
+   "City, ST" string from the card. Drop any listing whose city/state
+   isn't Charlotte, NC or one of these adjacent ZIP-3-area towns within
+   the 40-mile radius (Concord, Mooresville, Gastonia, Matthews,
+   Huntersville, Cornelius, Indian Trail, Monroe, Pineville, Belmont,
+   Mint Hill, Davidson, Harrisburg, Kannapolis, Salisbury, Statesville,
+   Rock Hill SC, Fort Mill SC). When in doubt, drop. Better to ship 0
+   listings than off-scope listings.
+5. **Per-listing fields** (mirror the existing schema; leave T/W/L =
+   null because peer-to-peer listings rarely give parseable dimensions):
+   ```json
+   {"vendor":"fb_marketplace","name":"<title>","species":"<inferred>",
+    "T":null,"W":null,"L":null,"price":<number>,"priceLabel":"$<n>",
+    "notes":"Location: <city, ST>. <free text snippet from listing>.",
+    "productUrl":"https://www.facebook.com/marketplace/item/<id>"}
+   ```
+   Cap each query at the first ~25 listings to keep the page reasonable.
+6. **Auth failure during run**: if Marketplace pages still redirect to
+   `/login` despite the cookie jar (cookies expired, account suspended,
+   etc.), don't write listings; refresh the `auth_required` warning's
+   `since` date and `lastAttempt` timestamp instead.
+
+The page renders an explicit empty-state message pulled from
+`_meta.warnings[*]` whenever the active source filter has zero items in
+the dataset, so the user always sees *why* the tab is empty rather than a
+generic "no matches" string.
+
 ## Output
 
 After scraping, build the merged products array, write

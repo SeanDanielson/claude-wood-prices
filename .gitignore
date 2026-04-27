@@ -9,6 +9,7 @@ zzz-*
 # Secrets — never commit these (and any editor swap copies)
 .gh-token*
 .repo-url*
+.fb-cookies*
 
 # Editor / OS cruft
 *.swp

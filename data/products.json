@@ -22,8 +22,29 @@
         "shopUrl": "https://blackforestsawmill.com/collections/slabs",
         "contactUrl": "https://blackforestsawmill.com/pages/contact-us",
         "note": "Shopify store. Prices and dimensions parsed from /collections/slabs/products.json. Lumber-quarter notation (e.g. 8/4 = 2\") converted to inches; dimension ranges resolved to the larger value."
+      },
+      "fb_marketplace": {
+        "name": "Facebook Marketplace — Charlotte, NC",
+        "location": "Charlotte, NC (peer-to-peer)",
+        "scope": {
+          "city": "Charlotte",
+          "state": "NC",
+          "locationSlug": "charlotte",
+          "radiusMiles": 40
+        },
+        "shopUrl": "https://www.facebook.com/marketplace/charlotte/search?query=walnut%20slab&radius=40",
+        "contactUrl": "https://www.facebook.com/marketplace/charlotte/",
+        "note": "Peer-to-peer listings, scoped to the Charlotte, NC area only (city slug 'charlotte', ~40-mile radius). Future runs MUST keep this scope — see SCRAPER_INSTRUCTIONS.md. Scrape requires an authenticated Facebook session; the unauthenticated /marketplace/ surface is a login wall (HTTP 302 to /login). Tab is wired but empty until a session cookie jar is provided."
       }
-    }
+    },
+    "warnings": [
+      {
+        "vendor": "fb_marketplace",
+        "code": "auth_required",
+        "message": "Facebook Marketplace blocks unauthenticated access (302 → /login). This tab is scoped to Charlotte, NC (~40-mile radius). The listings array stays empty until a logged-in session is provided. To enable: drop a Netscape-format cookie jar at .fb-cookies (sibling of .gh-token, gitignored) containing a valid c_user / xs / fr session for an account that can browse Marketplace. The scheduled task will detect the file on its next run, search /marketplace/charlotte/search for relevant queries, and populate listings; absent the file, it logs this warning and leaves the tab empty rather than fabricating data.",
+        "since": "2026-04-27"
+      }
+    ]
   },
   "products": [
     {

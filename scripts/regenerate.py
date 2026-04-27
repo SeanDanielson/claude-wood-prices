@@ -33,6 +33,7 @@ def main() -> int:
     page_data = {
         "lastUpdated": last_updated,
         "vendors": vendors,
+        "warnings": meta.get("warnings", []),
         "products": products,
     }
 
@@ -62,6 +63,7 @@ TEMPLATE = r"""<!doctype html>
     --vendor-tt: #6e4a25;
     --vendor-bj: #2c5d6b;
     --vendor-bf: #2f4d2a;
+    --vendor-fb: #1877f2;
     --shadow: 0 2px 8px rgba(60, 40, 20, 0.10);
   }
   * { box-sizing: border-box; }
@@ -115,6 +117,7 @@ TEMPLATE = r"""<!doctype html>
   .vendor-pill.tree_trunk { background: var(--vendor-tt); }
   .vendor-pill.bloom_johnson { background: var(--vendor-bj); }
   .vendor-pill.black_forest { background: var(--vendor-bf); }
+  .vendor-pill.fb_marketplace { background: var(--vendor-fb); }
 
   .controls { display: flex; flex-wrap: wrap; gap: 10px 12px; align-items: center; }
   .controls .label { font-weight: bold; color: var(--accent); margin-right: 4px; }
@@ -131,6 +134,8 @@ TEMPLATE = r"""<!doctype html>
   .filter-btn.bj { border-color: var(--vendor-bj); color: var(--vendor-bj); }
   .filter-btn.active.bf { background: var(--vendor-bf); border-color: var(--vendor-bf); }
   .filter-btn.bf { border-color: var(--vendor-bf); color: var(--vendor-bf); }
+  .filter-btn.active.fb { background: var(--vendor-fb); border-color: var(--vendor-fb); }
+  .filter-btn.fb { border-color: var(--vendor-fb); color: var(--vendor-fb); }
   .filter-btn .range { font-size: 11px; opacity: 0.75; margin-left: 6px; }
 
   .search-input {
@@ -161,6 +166,7 @@ TEMPLATE = r"""<!doctype html>
   .card.tree_trunk { border-left-color: var(--vendor-tt); }
   .card.bloom_johnson { border-left-color: var(--vendor-bj); }
   .card.black_forest { border-left-color: var(--vendor-bf); }
+  .card.fb_marketplace { border-left-color: var(--vendor-fb); }
   .card h3 { margin: 0; font-size: 17px; color: var(--accent); }
   .species { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; }
   .dims { font-size: 13px; color: #4a3a28; font-family: "Courier New", monospace; }
@@ -326,6 +332,7 @@ TEMPLATE = r"""<!doctype html>
       <button class="filter-btn" data-source="tree_trunk">Tree Trunk</button>
       <button class="filter-btn bj" data-source="bloom_johnson">Bloom &amp; Johnson</button>
       <button class="filter-btn bf" data-source="black_forest">Black Forest</button>
+      <button class="filter-btn fb" data-source="fb_marketplace">FB Marketplace — Charlotte, NC</button>
     </div>
     <div class="row-divider"></div>
     <div class="controls">
@@ -451,7 +458,7 @@ const PAGE_DATA = JSON.parse(document.currentScript.previousElementSibling ? "{}
       const fmtBF = v => (v === 0 || v == null ? 'n/a' : v.toFixed(2));
       const vendorPills = r.vendors.map(v => {
         const name = (VENDORS[v] && VENDORS[v].name) || v;
-        const short = v === 'tree_trunk' ? 'TT' : v === 'bloom_johnson' ? 'B&J' : v === 'black_forest' ? 'BF' : name;
+        const short = v === 'tree_trunk' ? 'TT' : v === 'bloom_johnson' ? 'B&J' : v === 'black_forest' ? 'BF' : v === 'fb_marketplace' ? 'FB' : name;
         return `<span class="vendor-pill ${v}">${short}</span>`;
       }).join('');
       tr.innerHTML = `
@@ -509,11 +516,11 @@ const PAGE_DATA = JSON.parse(document.currentScript.previousElementSibling ? "{}
       const tierClass = t ? `tier-${t}` : 'tier-na';
       const tierTxt = t ? tierLabel(t) : 'n/a';
       const vendorName = (VENDORS[p.vendor] && VENDORS[p.vendor].name) || p.vendor;
-      const linkLabel = p.vendor === 'bloom_johnson' ? 'View product' : p.vendor === 'black_forest' ? 'View on site' : 'View on shop';
+      const linkLabel = p.vendor === 'bloom_johnson' ? 'View product' : p.vendor === 'black_forest' ? 'View on site' : p.vendor === 'fb_marketplace' ? 'View listing' : 'View on shop';
       const card = document.createElement('div');
       card.className = `card ${p.vendor}`;
       card.innerHTML = `
-        <div class="species">${p.species} <span class="vendor-pill ${p.vendor}">${p.vendor === 'tree_trunk' ? 'Tree Trunk' : p.vendor === 'bloom_johnson' ? 'B&J' : p.vendor === 'black_forest' ? 'Black Forest' : (VENDORS[p.vendor] && VENDORS[p.vendor].name) || p.vendor}</span></div>
+        <div class="species">${p.species} <span class="vendor-pill ${p.vendor}">${p.vendor === 'tree_trunk' ? 'Tree Trunk' : p.vendor === 'bloom_johnson' ? 'B&J' : p.vendor === 'black_forest' ? 'Black Forest' : p.vendor === 'fb_marketplace' ? 'FB Marketplace' : (VENDORS[p.vendor] && VENDORS[p.vendor].name) || p.vendor}</span></div>
         <h3>${p.name}</h3>
         <div class="dims">${p.dims}</div>
         <div class="bf">${bfStr}</div>
@@ -529,7 +536,25 @@ const PAGE_DATA = JSON.parse(document.currentScript.previousElementSibling ? "{}
       `;
       grid.appendChild(card);
     }
-    empty.style.display = shown === 0 ? 'block' : 'none';
+    // Custom empty-state copy: when an entire vendor has zero items in the
+    // dataset (not just zero-after-filter), surface any vendor-level warning
+    // from _meta.warnings so the user understands WHY the tab is empty
+    // (e.g. fb_marketplace is auth-blocked) instead of just "no matches".
+    if (shown === 0) {
+      const vendorTotal = activeSource === 'all'
+        ? products.length
+        : products.filter(p => p.vendor === activeSource).length;
+      const w = (DATA.warnings || []).find(x => x.vendor === activeSource);
+      if (vendorTotal === 0 && w) {
+        const vname = (VENDORS[activeSource] && VENDORS[activeSource].name) || activeSource;
+        empty.innerHTML = `<strong>${vname} — no listings yet.</strong><br><br>${w.message}`;
+      } else {
+        empty.textContent = 'No items match your filters.';
+      }
+      empty.style.display = 'block';
+    } else {
+      empty.style.display = 'none';
+    }
     countEl.textContent = `${shown} of ${products.length} item${products.length === 1 ? '' : 's'}`;
   }
 
