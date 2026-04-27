@@ -65,6 +65,8 @@ rsync -a --delete \
   --exclude=data/inputs \
   --exclude=data/processed \
   --exclude='__pycache__' \
+  --exclude='zzz-*' \
+  --exclude='*.lock' \
   "$WORKSPACE_DIR/" "$CLONE_DIR/"
 
 git add -A

@@ -2,6 +2,10 @@ __pycache__/
 *.pyc
 .DS_Store
 
+# Sandbox artifacts that can't be deleted from inside Cowork
+zzz-*
+*.lock
+
 # Secrets — never commit these
 .gh-token
 .repo-url
