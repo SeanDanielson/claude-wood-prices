@@ -6,7 +6,7 @@ the following sources:
 - **The Tree Trunk Sawmill & Woodshop** (Westfield, NC) — small slabs, cookies, end-grain pieces, charcuterie boards.
 - **Bloom & Johnson Millworks** (Davidson, NC) — premium live-edge walnut slabs and reclaimed mantels.
 - **Black Forest Sawmill** (Crimora, VA) — Shopify store; slabs, lumber, DIY bundles, charcuterie stock.
-- **Facebook Marketplace — Charlotte, NC** — peer-to-peer listings, scoped to Charlotte and a ~40-mile radius (Concord, Mooresville, Gastonia, Matthews, Rock Hill, etc.). *Auth-walled* — listings only populate when an authenticated session cookie jar is present (see `scripts/SCRAPER_INSTRUCTIONS.md`); the tab otherwise shows an explanatory empty state.
+- **Facebook Marketplace — Charlotte, NC** — peer-to-peer listings, scoped to Charlotte and a ~40-mile radius (Concord, Mooresville, Gastonia, Matthews, Rock Hill, etc.). Scraped via the `Claude in Chrome` MCP using the user's already-logged-in Chrome session (cookie-jar fallback also supported). Capped at 50–150 unique listings — see `scripts/SCRAPER_INSTRUCTIONS.md` for queries, caps, and the graceful no-op behavior when no browser is connected at refresh time.
 
 Each item is shown with dimensions, total price, and computed **price per board-foot**, with a per-wood-type summary table that updates as you filter.
 
