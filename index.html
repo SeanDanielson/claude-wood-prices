@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Wood Shop Curation</title>
+<style>
+  :root {
+    --bg: #f6f1e7;
+    --card: #ffffff;
+    --ink: #2a1f14;
+    --muted: #6b5945;
+    --accent: #6e4a25;
+    --accent-2: #8a5a2b;
+    --tag-low: #2f7a3c;
+    --tag-med: #b07418;
+    --tag-high: #9a2a2a;
+    --vendor-tt: #6e4a25;
+    --vendor-bj: #2c5d6b;
+    --shadow: 0 2px 8px rgba(60, 40, 20, 0.10);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  header {
+    background: linear-gradient(180deg, #3a2618 0%, #4a2f1c 100%);
+    color: #f6f1e7;
+    padding: 28px 24px;
+    text-align: center;
+  }
+  header h1 { margin: 0 0 6px 0; font-size: 28px; letter-spacing: 1px; }
+  header .sub { margin: 0; font-size: 14px; opacity: 0.85; }
+  header a { color: #f6c98a; text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  main { max-width: 1200px; margin: 0 auto; padding: 24px; }
+
+  .panel {
+    background: var(--card);
+    padding: 18px 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+  }
+  .panel h2 { margin: 0 0 12px 0; font-size: 18px; color: var(--accent); }
+  .panel .note { font-size: 12px; color: var(--muted); margin-top: 8px; font-style: italic; }
+
+  table.summary { width: 100%; border-collapse: collapse; font-size: 14px; }
+  table.summary th, table.summary td {
+    padding: 8px 10px; text-align: left; border-bottom: 1px solid #e6dcc6;
+  }
+  table.summary th {
+    background: #efe4cc; color: var(--accent); font-weight: bold;
+    text-transform: uppercase; font-size: 12px; letter-spacing: 0.6px;
+  }
+  table.summary td.num, table.summary th.num {
+    text-align: right; font-family: "Courier New", monospace;
+  }
+  table.summary tr:hover td { background: #fbf6e8; }
+  .vendor-pill {
+    display: inline-block; font-size: 10px; text-transform: uppercase;
+    letter-spacing: 0.6px; padding: 2px 6px; border-radius: 3px;
+    color: #fff; vertical-align: middle; margin-left: 6px;
+  }
+  .vendor-pill.tree_trunk { background: var(--vendor-tt); }
+  .vendor-pill.bloom_johnson { background: var(--vendor-bj); }
+
+  .controls { display: flex; flex-wrap: wrap; gap: 10px 12px; align-items: center; }
+  .controls .label { font-weight: bold; color: var(--accent); margin-right: 4px; }
+  .filter-btn {
+    border: 1.5px solid var(--accent);
+    background: transparent; color: var(--accent);
+    padding: 7px 14px; border-radius: 999px;
+    cursor: pointer; font-family: inherit; font-size: 13px;
+    transition: all 0.15s ease;
+  }
+  .filter-btn:hover { background: rgba(110, 74, 37, 0.08); }
+  .filter-btn.active { background: var(--accent); color: #fff; }
+  .filter-btn.active.bj { background: var(--vendor-bj); border-color: var(--vendor-bj); }
+  .filter-btn.bj { border-color: var(--vendor-bj); color: var(--vendor-bj); }
+  .filter-btn .range { font-size: 11px; opacity: 0.75; margin-left: 6px; }
+
+  .search-input {
+    flex: 1; min-width: 180px;
+    padding: 8px 12px; border: 1.5px solid #c9b89a;
+    border-radius: 6px; font-family: inherit; font-size: 14px;
+    background: #fffefb;
+  }
+  .count { margin-left: auto; color: var(--muted); font-size: 13px; font-style: italic; }
+  .mode-row { margin-top: 10px; font-size: 13px; }
+  .mode-row label { margin-right: 14px; cursor: pointer; }
+  .row-divider { width: 100%; height: 1px; background: #e6dcc6; margin: 6px 0; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 16px;
+  }
+  .card {
+    background: var(--card);
+    border-radius: 8px;
+    padding: 16px 18px;
+    box-shadow: var(--shadow);
+    border-left: 5px solid var(--accent-2);
+    display: flex; flex-direction: column; gap: 8px;
+    position: relative;
+  }
+  .card.tree_trunk { border-left-color: var(--vendor-tt); }
+  .card.bloom_johnson { border-left-color: var(--vendor-bj); }
+  .card h3 { margin: 0; font-size: 17px; color: var(--accent); }
+  .species { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; }
+  .dims { font-size: 13px; color: #4a3a28; font-family: "Courier New", monospace; }
+  .bf { font-size: 12.5px; color: var(--muted); font-family: "Courier New", monospace; }
+  .notes { font-size: 13px; color: #5b4a36; font-style: italic; }
+  .footer-row {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: auto; padding-top: 8px; border-top: 1px dashed #d8c8ad;
+  }
+  .price-block { display: flex; flex-direction: column; }
+  .price { font-size: 18px; font-weight: bold; color: var(--ink); }
+  .price-bf { font-size: 12px; color: var(--accent-2); }
+  .tier {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.8px;
+    padding: 3px 8px; border-radius: 4px; color: #fff;
+  }
+  .tier-low  { background: var(--tag-low); }
+  .tier-med  { background: var(--tag-med); }
+  .tier-high { background: var(--tag-high); }
+  .tier-na   { background: #888; }
+  .view-link {
+    display: inline-block; margin-top: 6px;
+    font-size: 12.5px; color: var(--accent-2); text-decoration: none;
+    border: 1px solid #d8c8ad; padding: 4px 10px; border-radius: 4px;
+    align-self: flex-start;
+  }
+  .view-link:hover { background: #fbf6e8; }
+  .view-link::after { content: " ↗"; }
+
+  .empty {
+    text-align: center; padding: 40px;
+    color: var(--muted); font-style: italic;
+  }
+  footer {
+    text-align: center; padding: 24px;
+    font-size: 12px; color: var(--muted);
+  }
+  footer a { color: var(--accent-2); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Wood Shop Curation</h1>
+  <p class="sub" id="headerSub">Loading…</p>
+</header>
+
+<main>
+
+  <div class="panel">
+    <h2>Average Price per Board Foot, by Wood Type</h2>
+    <table class="summary" id="summaryTable">
+      <thead>
+        <tr>
+          <th>Wood Type</th>
+          <th class="num">Items</th>
+          <th class="num">Total BF</th>
+          <th class="num">Total $</th>
+          <th class="num">Avg $/BF</th>
+          <th class="num">Min $/BF</th>
+          <th class="num">Max $/BF</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <p class="note">
+      Board-foot (BF) = (Thickness × Width × Length, in inches) ÷ 144.
+      Items missing a dimension or sold by the piece are excluded from BF averages.
+      Aggregates apply the current Source filter.
+    </p>
+  </div>
+
+  <div class="panel">
+    <div class="controls">
+      <span class="label">Source:</span>
+      <button class="filter-btn active" data-source="all">All</button>
+      <button class="filter-btn" data-source="tree_trunk">Tree Trunk</button>
+      <button class="filter-btn bj" data-source="bloom_johnson">Bloom &amp; Johnson</button>
+    </div>
+    <div class="row-divider"></div>
+    <div class="controls">
+      <span class="label">Tier:</span>
+      <button class="filter-btn active" data-tier="all">All</button>
+      <button class="filter-btn" data-tier="low">Low</button>
+      <button class="filter-btn" data-tier="med">Medium</button>
+      <button class="filter-btn" data-tier="high">High</button>
+      <input type="text" class="search-input" id="search" placeholder="Search by species, name, or notes…" />
+      <span class="count" id="count"></span>
+    </div>
+    <div class="mode-row">
+      <span class="label">Tier based on:</span>
+      <label><input type="radio" name="mode" value="total" checked /> Total price</label>
+      <label><input type="radio" name="mode" value="bf" /> Price per board-foot</label>
+      <span id="rangeHint" style="color: var(--muted); margin-left: 8px;"></span>
+    </div>
+  </div>
+
+  <div id="grid" class="grid"></div>
+  <div id="empty" class="empty" style="display:none;">No items match your filters.</div>
+</main>
+
+<footer id="footer"></footer>
+
+<script>
+const PAGE_DATA = JSON.parse(document.currentScript.previousElementSibling ? "{}" : "{}");
+</script>
+<!-- data island -->
+<script id="page-data" type="application/json">{"lastUpdated": "2026-04-27", "vendors": {"tree_trunk": {"name": "The Tree Trunk Sawmill &amp; Woodshop", "location": "Westfield, NC", "shopUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop", "contactUrl": "https://www.thetreetrunksawmillandwoodshop.com/contact", "note": "Wix gallery \u2014 items don't have individual product pages; 'View on shop' deep-links to the shop landing page."}, "bloom_johnson": {"name": "Bloom &amp; Johnson Millworks", "location": "Davidson, NC", "shopUrl": "https://www.bloomandjohnson.com/", "contactUrl": "https://www.bloomandjohnson.com/contact", "note": "Per-item product pages with checkout. Slab inventory currently drying \u2014 completion Fall 2027."}}, "products": [{"vendor": "tree_trunk", "name": "Tulip / Rainbow Poplar Slab", "species": "Tulip Poplar", "T": 2.5, "W": 18.875, "L": 37, "price": 115, "priceLabel": "$115", "notes": "", "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"}, {"vendor": "tree_trunk", "name": "Ash Slab Cookie / End-grain Piece", "species": "Ash", "T": 3, "W": 13.25, "L": 27.25, "price": 20, "priceLabel": "$20", "notes": "", "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"}, {"vendor": "tree_trunk", "name": "Sweetgum Slab", "species": "Sweetgum", "T": 1.25, "W": 9.25, "L": 17.75, "price": 20, "priceLabel": "$20", "notes": "", "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"}, {"vendor": "tree_trunk", "name": "Red Oak Burl Slab", "species": "Red Oak (Burl)", "T": 2.875, "W": 9.5, "L": 16.5, "price": 30, "priceLabel": "$30", "notes": "", "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"}, {"vendor": "tree_trunk", "name": "Black Walnut Slab Cookie / End-grain Piece", "species": "Black Walnut", "T": 3, "W": 12.25, "L": 22.75, "price": 35, "priceLabel": "$35", "notes": "", "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"}, {"vendor": "tree_trunk", "name": "White Ash Board", "species": "White Ash", "T": 1.25, "W": 14, "L": 24, "price": 40, "priceLabel": "$40", "notes": "", "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"}, {"vendor": "tree_trunk", "name": "Black Walnut Slab End-grain Piece", "species": "Black Walnut", "T": null, "W": null, "L": null, "price": 15, "priceLabel": "$15", "notes": "", "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"}, {"vendor": "tree_trunk", "name": "Sycamore Slab", "species": "Sycamore", "T": 1.25, "W": 12, "L": null, "price": 30, "priceLabel": "$30", "notes": "Length not listed on source.", "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"}, {"vendor": "tree_trunk", "name": "Sycamore Slab", "species": "Sycamore", "T": 1.25, "W": 15.75, "L": 42, "price": 40, "priceLabel": "$40", "notes": "Length transcribed as 42\" (source shows '12 42\"L').", "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"}, {"vendor": "tree_trunk", "name": "Sweetgum Slab", "species": "Sweetgum", "T": 1, "W": 9.5, "L": 36.5, "price": 15, "priceLabel": "$15", "notes": "", "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"}, {"vendor": "tree_trunk", "name": "Sweetgum Board", "species": "Sweetgum", "T": 1.75, "W": 13.25, "L": 44.5, "price": 40, "priceLabel": "$40", "notes": "", "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"}, {"vendor": "tree_trunk", "name": "Sweetgum Board", "species": "Sweetgum", "T": 3.125, "W": 5.75, "L": 28, "price": 20, "priceLabel": "$20", "notes": "", "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"}, {"vendor": "tree_trunk", "name": "Sweetgum Board", "species": "Sweetgum", "T": 3.125, "W": 8, "L": 42, "price": 40, "priceLabel": "$40", "notes": "", "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"}, {"vendor": "tree_trunk", "name": "Spalted Hackberry Slab", "species": "Spalted Hackberry", "T": 2.75, "W": null, "L": 62, "price": 50, "priceLabel": "$50", "notes": "Width not listed on source.", "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"}, {"vendor": "tree_trunk", "name": "River Birch Slab End-grain Piece", "species": "River Birch", "T": null, "W": null, "L": null, "price": 35, "priceLabel": "$35", "notes": "", "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"}, {"vendor": "tree_trunk", "name": "Elm Slab Cookie / End-grain Piece", "species": "Elm", "T": 2.5, "W": 11.25, "L": 20.375, "price": 30, "priceLabel": "$30", "notes": "", "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"}, {"vendor": "tree_trunk", "name": "Elm Slab Cookie / End-grain Piece", "species": "Elm", "T": 1.875, "W": 9.5, "L": 16, "price": 20, "priceLabel": "$20", "notes": "", "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"}, {"vendor": "tree_trunk", "name": "Box Elder (Maple) Slab End-grain Piece", "species": "Box Elder / Maple", "T": null, "W": null, "L": null, "price": 15, "priceLabel": "$15", "notes": "", "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"}, {"vendor": "tree_trunk", "name": "Apple Slabs Cookies / End-grain Pieces", "species": "Apple", "T": null, "W": null, "L": null, "price": 15, "priceLabel": "$15 each", "notes": "Sold by the piece", "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"}, {"vendor": "tree_trunk", "name": "Apple Slabs Cookies / End-grain Pieces", "species": "Apple", "T": null, "W": null, "L": null, "price": 10, "priceLabel": "$15 &amp; $10 each", "notes": "Mixed pricing", "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"}, {"vendor": "tree_trunk", "name": "Bald Cypress Slab Cookie / End-grain Piece", "species": "Bald Cypress", "T": 5.75, "W": 16.5, "L": null, "price": 45, "priceLabel": "$45", "notes": "Length not listed on source.", "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"}, {"vendor": "tree_trunk", "name": "Siberian Elm Burl Cookie / End-grain Piece", "species": "Siberian Elm (Burl)", "T": 2.75, "W": 16, "L": 19.75, "price": 100, "priceLabel": "$100", "notes": "", "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"}, {"vendor": "tree_trunk", "name": "Siberian Elm Burl Cookie / End-grain Piece", "species": "Siberian Elm (Burl)", "T": 2.75, "W": 21, "L": 22.25, "price": 135, "priceLabel": "$135", "notes": "", "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"}, {"vendor": "tree_trunk", "name": "Siberian Elm Burl Cookie / End-grain Piece", "species": "Siberian Elm (Burl)", "T": 3.375, "W": 23, "L": 22, "price": 180, "priceLabel": "$180", "notes": "", "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"}, {"vendor": "tree_trunk", "name": "Siberian Elm Burl Cookie / End-grain Piece", "species": "Siberian Elm (Burl)", "T": 3.75, "W": 22.25, "L": 22.25, "price": 195, "priceLabel": "$195", "notes": "", "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"}, {"vendor": "tree_trunk", "name": "Red Oak Burl Cookie / End-grain Piece", "species": "Red Oak (Burl)", "T": 3.5, "W": 26, "L": 24, "price": 230, "priceLabel": "$230", "notes": "", "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"}, {"vendor": "tree_trunk", "name": "Black Walnut Charcuterie Board", "species": "Black Walnut (Finished)", "T": 0.75, "W": 10.25, "L": 17.5, "price": 150, "priceLabel": "$150", "notes": "Highly figured. Beautiful crotch figure. Rubber feet.", "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"}, {"vendor": "tree_trunk", "name": "Weeping Cherry Charcuterie Board", "species": "Weeping Cherry (Finished)", "T": 2.125, "W": 11, "L": 20.375, "price": 150, "priceLabel": "$150", "notes": "Highly figured with natural live-edge characteristics. Rubber feet.", "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"}, {"vendor": "tree_trunk", "name": "Weeping Cherry Live-edge Charcuterie Board", "species": "Weeping Cherry (Finished)", "T": 1.625, "W": 11.125, "L": 22.375, "price": 150, "priceLabel": "$150", "notes": "Unique shape. Rubber feet. Handle / hanging hole.", "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"}, {"vendor": "tree_trunk", "name": "Weeping Cherry Charcuterie Board", "species": "Weeping Cherry (Finished)", "T": 1.5, "W": 11, "L": 20.875, "price": 150, "priceLabel": "$150", "notes": "Gorgeous crotch grain, highly figured. Rubber feet.", "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"}, {"vendor": "tree_trunk", "name": "Black Walnut Butcher Block / Charcuterie Board", "species": "Black Walnut (Finished)", "T": 2.25, "W": 18.375, "L": 9.25, "price": 225, "priceLabel": "$225", "notes": "Hefty. Beautiful multi-toned grain. Rubber feet.", "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"}, {"vendor": "tree_trunk", "name": "Maple Live-edge Charcuterie Board", "species": "Hard Maple (Finished)", "T": 1.5, "W": 10, "L": 24.5, "price": 75, "priceLabel": "$75", "notes": "Natural live-edge. Finished with food-grade tung oil.", "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"}, {"vendor": "bloom_johnson", "name": "Walnut Slab #W11025", "species": "Walnut", "T": null, "W": null, "L": null, "price": 3065, "priceLabel": "$3,065", "notes": "Live-edge. Small crack in bottom right; solid feathering top half. Drying \u2014 completion Fall 2027.", "productUrl": "https://www.bloomandjohnson.com/product/walnut-slab-w11025"}, {"vendor": "bloom_johnson", "name": "Walnut Slab #11125", "species": "Walnut", "T": null, "W": null, "L": null, "price": 2920, "priceLabel": "$2,920", "notes": "Live-edge. Solid feathering top half. Drying \u2014 completion Fall 2027.", "productUrl": "https://www.bloomandjohnson.com/product/walnut-slab-11125"}, {"vendor": "bloom_johnson", "name": "Walnut Slab #11225", "species": "Walnut", "T": null, "W": null, "L": null, "price": 1980, "priceLabel": "$1,980", "notes": "Live-edge. Drying \u2014 completion Fall 2027.", "productUrl": "https://www.bloomandjohnson.com/product/walnut-slab-11225"}, {"vendor": "bloom_johnson", "name": "Walnut Slab #W11325", "species": "Walnut", "T": null, "W": null, "L": null, "price": 1430, "priceLabel": "$1,430", "notes": "Live-edge. Drying \u2014 completion Fall 2027.", "productUrl": "https://www.bloomandjohnson.com/product/walnut-slab-11325"}, {"vendor": "bloom_johnson", "name": "Walnut Slab #W11425", "species": "Walnut", "T": null, "W": null, "L": null, "price": 3200, "priceLabel": "$3,200", "notes": "Live-edge. Drying \u2014 completion Fall 2027.", "productUrl": "https://www.bloomandjohnson.com/product/walnut-slab-w11425"}, {"vendor": "bloom_johnson", "name": "Walnut Slab #W11525", "species": "Walnut", "T": null, "W": null, "L": null, "price": 3050, "priceLabel": "$3,050", "notes": "Live-edge. Drying \u2014 completion Fall 2027.", "productUrl": "https://www.bloomandjohnson.com/product/walnut-slab-w11525"}, {"vendor": "bloom_johnson", "name": "Walnut Slab #W11625", "species": "Walnut", "T": null, "W": null, "L": null, "price": 2170, "priceLabel": "$2,170", "notes": "Live-edge. Drying \u2014 completion Fall 2027.", "productUrl": "https://www.bloomandjohnson.com/product/walnut-slab-w11625"}, {"vendor": "bloom_johnson", "name": "Walnut Slab #W11725", "species": "Walnut", "T": null, "W": null, "L": null, "price": 1480, "priceLabel": "$1,480", "notes": "Live-edge. Drying \u2014 completion Fall 2027.", "productUrl": "https://www.bloomandjohnson.com/product/walnut-slab-w11725"}, {"vendor": "bloom_johnson", "name": "Ash Mantel #2004", "species": "Ash", "T": 3.5, "W": 7.75, "L": 71, "price": 400, "priceLabel": "$400", "notes": "", "productUrl": "https://www.bloomandjohnson.com/product/ash-mantel-3-5-x-7-3-4-x-71-2004"}, {"vendor": "bloom_johnson", "name": "Maple Mantel #2005", "species": "Maple", "T": 4, "W": 7.25, "L": 74, "price": 650, "priceLabel": "$650", "notes": "", "productUrl": "https://www.bloomandjohnson.com/product/maple-mantel-4-x-7-1-4-x-74-2005"}, {"vendor": "bloom_johnson", "name": "Ash Mantel #2006", "species": "Ash", "T": 3, "W": 9, "L": 74, "price": 580, "priceLabel": "$580", "notes": "", "productUrl": "https://www.bloomandjohnson.com/product/ash-mantel-3-x-9-x-74-2006"}, {"vendor": "bloom_johnson", "name": "Hickory Mantel #2007", "species": "Hickory", "T": 4, "W": 9, "L": 75, "price": 650, "priceLabel": "$650", "notes": "", "productUrl": "https://www.bloomandjohnson.com/product/hickory-mantel-4-x-9-x-75-2007"}, {"vendor": "bloom_johnson", "name": "Maple Mantel #2008", "species": "Maple", "T": 5.25, "W": 9.5, "L": 75, "price": 650, "priceLabel": "$650", "notes": "", "productUrl": "https://www.bloomandjohnson.com/product/maple-mantel-5-25-x-9-5-x-75-2008"}, {"vendor": "bloom_johnson", "name": "Ash Mantel #2009", "species": "Ash", "T": 3.5, "W": 8, "L": 77, "price": 550, "priceLabel": "$550", "notes": "", "productUrl": "https://www.bloomandjohnson.com/product/ash-mantel-3-5-x-8-x-77-2009"}, {"vendor": "bloom_johnson", "name": "Live Edge Beech Mantel #2010", "species": "Beech", "T": 5.5, "W": 9, "L": 77, "price": 780, "priceLabel": "$780", "notes": "Live edge.", "productUrl": "https://www.bloomandjohnson.com/product/live-edge-beech-mantel-5-5-x-9-x-77-2010"}, {"vendor": "bloom_johnson", "name": "Beech Mantel #2011", "species": "Beech", "T": 5.5, "W": 9, "L": 74, "price": 800, "priceLabel": "$800", "notes": "", "productUrl": "https://www.bloomandjohnson.com/product/beech-mantel-5-5-x-9-x-74-2011"}]}</script>
+<script>
+(() => {
+  const DATA = JSON.parse(document.getElementById('page-data').textContent);
+  const VENDORS = DATA.vendors || {};
+  const products = DATA.products || [];
+
+  // Compute BF and $/BF on each item
+  for (const p of products) {
+    if (p.T != null && p.W != null && p.L != null) {
+      p.bf = (p.T * p.W * p.L) / 144;
+      p.dollarPerBF = p.price / p.bf;
+    } else {
+      p.bf = null; p.dollarPerBF = null;
+    }
+    const parts = [];
+    if (p.T != null) parts.push(p.T + '"T');
+    if (p.W != null) parts.push(p.W + '"W');
+    if (p.L != null) parts.push(p.L + '"L');
+    p.dims = parts.length ? parts.join(' × ') : '—';
+  }
+
+  // Header
+  const subEl = document.getElementById('headerSub');
+  const vendorBlurbs = Object.values(VENDORS).map(v =>
+    `<a href="${v.shopUrl}" target="_blank" rel="noopener">${v.name}</a>`
+  ).join(' &middot; ');
+  subEl.innerHTML = `Curated from ${vendorBlurbs} &middot; data updated ${DATA.lastUpdated}`;
+
+  // Footer
+  const footerEl = document.getElementById('footer');
+  footerEl.innerHTML = `
+    <p>Inventory snapshot from ${DATA.lastUpdated}. Pricing may have changed since.</p>
+    <p>${Object.values(VENDORS).map(v =>
+      `Contact ${v.name}: <a href="${v.contactUrl}" target="_blank" rel="noopener">${v.contactUrl.replace(/^https?:\/\//,'')}</a>`
+    ).join(' &middot; ')}</p>
+  `;
+
+  // Tier thresholds
+  const TOTAL_TIERS = [
+    { key: 'low', max: 100, label: 'Low (≤ $100)' },
+    { key: 'med', max: 500, label: 'Medium ($101-$500)' },
+    { key: 'high', max: Infinity, label: 'High (> $500)' }
+  ];
+  const BF_TIERS = [
+    { key: 'low', max: 8, label: 'Low (≤ $8/BF)' },
+    { key: 'med', max: 20, label: 'Medium ($8-$20/BF)' },
+    { key: 'high', max: Infinity, label: 'High (> $20/BF)' }
+  ];
+
+  function tierFor(p, mode) {
+    if (mode === 'bf') {
+      if (p.dollarPerBF == null) return null;
+      for (const t of BF_TIERS) if (p.dollarPerBF <= t.max) return t.key;
+    } else {
+      for (const t of TOTAL_TIERS) if (p.price <= t.max) return t.key;
+    }
+    return null;
+  }
+  function tierLabel(t) { return ({low:'Low', med:'Medium', high:'High'})[t] || 'n/a'; }
+
+  // Summary
+  function buildSummary(filtered) {
+    const groups = new Map();
+    for (const p of filtered) {
+      if (!groups.has(p.species)) groups.set(p.species, { items:0, totalBF:0, totalPriced:0, perBF:[], vendors: new Set() });
+      const g = groups.get(p.species);
+      g.items++;
+      g.vendors.add(p.vendor);
+      if (p.bf != null) {
+        g.totalBF += p.bf;
+        g.totalPriced += p.price;
+        g.perBF.push(p.dollarPerBF);
+      }
+    }
+    const rows = [];
+    for (const [species, g] of groups) {
+      const avg = g.totalBF > 0 ? g.totalPriced / g.totalBF : null;
+      const min = g.perBF.length ? Math.min(...g.perBF) : null;
+      const max = g.perBF.length ? Math.max(...g.perBF) : null;
+      rows.push({ species, items:g.items, totalBF:g.totalBF, totalPriced:g.totalPriced, avg, min, max, vendors: [...g.vendors] });
+    }
+    rows.sort((a, b) => {
+      if (a.avg == null && b.avg == null) return a.species.localeCompare(b.species);
+      if (a.avg == null) return 1;
+      if (b.avg == null) return -1;
+      return a.avg - b.avg;
+    });
+    const tbody = document.querySelector('#summaryTable tbody');
+    tbody.innerHTML = '';
+    for (const r of rows) {
+      const tr = document.createElement('tr');
+      const fmt = v => (v == null ? 'n/a' : '$' + v.toFixed(2));
+      const fmtBF = v => (v === 0 || v == null ? 'n/a' : v.toFixed(2));
+      const vendorPills = r.vendors.map(v => {
+        const name = (VENDORS[v] && VENDORS[v].name) || v;
+        const short = v === 'tree_trunk' ? 'TT' : v === 'bloom_johnson' ? 'B&J' : name;
+        return `<span class="vendor-pill ${v}">${short}</span>`;
+      }).join('');
+      tr.innerHTML = `
+        <td>${r.species} ${vendorPills}</td>
+        <td class="num">${r.items}</td>
+        <td class="num">${fmtBF(r.totalBF)}</td>
+        <td class="num">$${(r.totalPriced || 0).toLocaleString()}</td>
+        <td class="num"><strong>${fmt(r.avg)}</strong></td>
+        <td class="num">${fmt(r.min)}</td>
+        <td class="num">${fmt(r.max)}</td>
+      `;
+      tbody.appendChild(tr);
+    }
+  }
+
+  // Render
+  const grid = document.getElementById('grid');
+  const empty = document.getElementById('empty');
+  const countEl = document.getElementById('count');
+  const searchInput = document.getElementById('search');
+  const tierBtns = document.querySelectorAll('.filter-btn[data-tier]');
+  const sourceBtns = document.querySelectorAll('.filter-btn[data-source]');
+  const modeRadios = document.querySelectorAll('input[name="mode"]');
+  const rangeHint = document.getElementById('rangeHint');
+
+  let activeTier = 'all', activeSource = 'all', activeSearch = '', activeMode = 'total';
+
+  function updateRangeHint() {
+    const tiers = activeMode === 'bf' ? BF_TIERS : TOTAL_TIERS;
+    rangeHint.textContent = '(' + tiers.map(t => t.label).join(' · ') + ')';
+  }
+
+  function render() {
+    grid.innerHTML = '';
+    const q = activeSearch.toLowerCase().trim();
+    const filtered = [];
+    for (const p of products) {
+      if (activeSource !== 'all' && p.vendor !== activeSource) continue;
+      const t = tierFor(p, activeMode);
+      if (activeMode === 'bf' && t == null && activeTier !== 'all') continue;
+      if (activeTier !== 'all' && t !== activeTier) continue;
+      if (q) {
+        const hay = (p.name + ' ' + p.species + ' ' + (p.notes || '')).toLowerCase();
+        if (!hay.includes(q)) continue;
+      }
+      filtered.push(p);
+    }
+    buildSummary(filtered);
+    let shown = 0;
+    for (const p of filtered) {
+      shown++;
+      const t = tierFor(p, activeMode);
+      const bfStr = p.bf != null ? `${p.bf.toFixed(2)} BF` : 'BF n/a (missing dim.)';
+      const dpbfStr = p.dollarPerBF != null ? `$${p.dollarPerBF.toFixed(2)} / BF` : '—';
+      const tierClass = t ? `tier-${t}` : 'tier-na';
+      const tierTxt = t ? tierLabel(t) : 'n/a';
+      const vendorName = (VENDORS[p.vendor] && VENDORS[p.vendor].name) || p.vendor;
+      const linkLabel = p.vendor === 'bloom_johnson' ? 'View product' : 'View on shop';
+      const card = document.createElement('div');
+      card.className = `card ${p.vendor}`;
+      card.innerHTML = `
+        <div class="species">${p.species} <span class="vendor-pill ${p.vendor}">${p.vendor === 'tree_trunk' ? 'Tree Trunk' : 'B&J'}</span></div>
+        <h3>${p.name}</h3>
+        <div class="dims">${p.dims}</div>
+        <div class="bf">${bfStr}</div>
+        ${p.notes ? `<div class="notes">${p.notes}</div>` : ''}
+        ${p.productUrl ? `<a class="view-link" href="${p.productUrl}" target="_blank" rel="noopener">${linkLabel}</a>` : ''}
+        <div class="footer-row">
+          <div class="price-block">
+            <span class="price">${p.priceLabel}</span>
+            <span class="price-bf">${dpbfStr}</span>
+          </div>
+          <span class="tier ${tierClass}">${tierTxt}</span>
+        </div>
+      `;
+      grid.appendChild(card);
+    }
+    empty.style.display = shown === 0 ? 'block' : 'none';
+    countEl.textContent = `${shown} of ${products.length} item${products.length === 1 ? '' : 's'}`;
+  }
+
+  tierBtns.forEach(b => b.addEventListener('click', () => {
+    tierBtns.forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    activeTier = b.dataset.tier;
+    render();
+  }));
+  sourceBtns.forEach(b => b.addEventListener('click', () => {
+    sourceBtns.forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    activeSource = b.dataset.source;
+    render();
+  }));
+  searchInput.addEventListener('input', e => { activeSearch = e.target.value; render(); });
+  modeRadios.forEach(r => r.addEventListener('change', e => {
+    activeMode = e.target.value; updateRangeHint(); render();
+  }));
+
+  updateRangeHint();
+  render();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.DS_Store
+
+# Secrets — never commit these
+.gh-token
+.repo-url
+
+# Drop zones for ad-hoc input files
+data/inputs/*
+data/processed/*
+!data/inputs/.gitkeep
+!data/processed/.gitkeep
