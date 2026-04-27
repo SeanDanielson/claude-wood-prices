@@ -6,9 +6,15 @@ __pycache__/
 zzz-*
 *.lock
 
-# Secrets — never commit these
-.gh-token
-.repo-url
+# Secrets — never commit these (and any editor swap copies)
+.gh-token*
+.repo-url*
+
+# Editor / OS cruft
+*.swp
+*.swo
+*~
+.DS_Store
 
 # Drop zones for ad-hoc input files
 data/inputs/*

@@ -59,15 +59,28 @@ fi
 
 echo "[publish] Mirroring workspace files into clone…"
 rsync -a --delete \
+  --filter='P /.git/' \
   --exclude=.git \
-  --exclude=.gh-token \
-  --exclude=.repo-url \
+  --exclude='.gh-token*' \
+  --exclude='.repo-url*' \
   --exclude=data/inputs \
   --exclude=data/processed \
   --exclude='__pycache__' \
   --exclude='zzz-*' \
   --exclude='*.lock' \
+  --exclude='*.swp' \
+  --exclude='*.swo' \
+  --exclude='*~' \
+  --exclude='.DS_Store' \
   "$WORKSPACE_DIR/" "$CLONE_DIR/"
+
+# Sweep out any clone files that match the ignore list but were committed
+# in earlier runs (e.g. sandbox artifacts before the ignore patterns existed).
+shopt -s nullglob
+for f in "$CLONE_DIR"/zzz-* "$CLONE_DIR"/*.lock; do
+  [[ -e "$f" ]] && rm -f "$f"
+done
+shopt -u nullglob
 
 git add -A
 if git diff --cached --quiet 2>/dev/null && [[ $(git rev-list --count HEAD 2>/dev/null || echo 0) -gt 0 ]]; then
