@@ -1,20 +1,20 @@
 {
   "_meta": {
-    "lastUpdated": "2026-04-27",
+    "lastUpdated": "2026-05-04",
     "vendors": {
       "tree_trunk": {
         "name": "The Tree Trunk Sawmill & Woodshop",
         "location": "Westfield, NC",
         "shopUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop",
         "contactUrl": "https://www.thetreetrunksawmillandwoodshop.com/contact",
-        "note": "Wix gallery — items don't have individual product pages; 'View on shop' deep-links to the shop landing page."
+        "note": "Wix gallery \u2014 items don't have individual product pages; 'View on shop' deep-links to the shop landing page."
       },
       "bloom_johnson": {
         "name": "Bloom & Johnson Millworks",
         "location": "Davidson, NC",
         "shopUrl": "https://www.bloomandjohnson.com/",
         "contactUrl": "https://www.bloomandjohnson.com/contact",
-        "note": "Per-item product pages with checkout. Slab inventory currently drying — completion Fall 2027."
+        "note": "Per-item product pages with checkout. Slab inventory currently drying \u2014 completion Fall 2027."
       },
       "black_forest": {
         "name": "Black Forest Sawmill",
@@ -24,7 +24,7 @@
         "note": "Shopify store. Prices and dimensions parsed from /collections/slabs/products.json. Lumber-quarter notation (e.g. 8/4 = 2\") converted to inches; dimension ranges resolved to the larger value."
       },
       "fb_marketplace": {
-        "name": "Facebook Marketplace — Charlotte, NC",
+        "name": "Facebook Marketplace \u2014 Charlotte, NC",
         "location": "Charlotte, NC (peer-to-peer)",
         "scope": {
           "city": "Charlotte",
@@ -37,16 +37,24 @@
         "note": "Peer-to-peer listings, scoped to Charlotte, NC and a ~25-mile radius (FB caps the slider at 25 mi even when 40 is requested). Scraped via the Claude-in-Chrome MCP using the user's already-logged-in Facebook session across queries: walnut slab, live edge, lumber, hardwood, mantel, wood. Items validated against the Charlotte allow-list (Charlotte and neighboring towns within ~40 miles). T/W/L = null because peer-to-peer listings rarely give parseable dimensions; the listing title is shown verbatim and 'View listing' jumps to the FB item page."
       }
     },
-    "warnings": []
+    "warnings": [
+      {
+        "vendor": "fb_marketplace",
+        "code": "no_session",
+        "message": "Claude-in-Chrome JavaScript execution was blocked on facebook.com (permission denied); fb_marketplace listings left as-is from the prior run.",
+        "since": "2026-05-04",
+        "lastAttempt": "2026-05-04"
+      }
+    ]
   },
   "products": [
     {
       "vendor": "tree_trunk",
-      "name": "Tulip / Rainbow Poplar Slab",
+      "name": "Tulip/Rainbow Poplar Slab",
       "species": "Tulip Poplar",
       "T": 2.5,
       "W": 18.875,
-      "L": 37,
+      "L": 37.0,
       "price": 115,
       "priceLabel": "$115",
       "notes": "",
@@ -54,9 +62,9 @@
     },
     {
       "vendor": "tree_trunk",
-      "name": "Ash Slab Cookie / End-grain Piece",
+      "name": "Ash Slab Cookie/End-grain Piece",
       "species": "Ash",
-      "T": 3,
+      "T": 3.0,
       "W": 13.25,
       "L": 27.25,
       "price": 20,
@@ -79,7 +87,7 @@
     {
       "vendor": "tree_trunk",
       "name": "Red Oak Burl Slab",
-      "species": "Red Oak (Burl)",
+      "species": "Red Oak",
       "T": 2.875,
       "W": 9.5,
       "L": 16.5,
@@ -90,9 +98,9 @@
     },
     {
       "vendor": "tree_trunk",
-      "name": "Black Walnut Slab Cookie / End-grain Piece",
+      "name": "Black Walnut Slab Cookie/End-grain Piece",
       "species": "Black Walnut",
-      "T": 3,
+      "T": 3.0,
       "W": 12.25,
       "L": 22.75,
       "price": 35,
@@ -117,18 +125,30 @@
       "name": "Sycamore Slab",
       "species": "Sycamore",
       "T": 1.25,
-      "W": 12,
+      "W": 12.0,
       "L": null,
       "price": 30,
       "priceLabel": "$30",
-      "notes": "Length not listed on source.",
+      "notes": "",
+      "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"
+    },
+    {
+      "vendor": "tree_trunk",
+      "name": "Sycamore Slab",
+      "species": "Sycamore",
+      "T": 1.25,
+      "W": 15.75,
+      "L": 12.0,
+      "price": 40,
+      "priceLabel": "$40",
+      "notes": "",
       "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"
     },
     {
       "vendor": "tree_trunk",
       "name": "Sweetgum Slab",
       "species": "Sweetgum",
-      "T": 1,
+      "T": 1.0,
       "W": 9.5,
       "L": 36.5,
       "price": 15,
@@ -154,7 +174,7 @@
       "species": "Sweetgum",
       "T": 3.125,
       "W": 5.75,
-      "L": 28,
+      "L": 28.0,
       "price": 20,
       "priceLabel": "$20",
       "notes": "",
@@ -165,8 +185,8 @@
       "name": "Sweetgum Board",
       "species": "Sweetgum",
       "T": 3.125,
-      "W": 8,
-      "L": 42,
+      "W": 8.0,
+      "L": 42.0,
       "price": 40,
       "priceLabel": "$40",
       "notes": "",
@@ -178,10 +198,10 @@
       "species": "Spalted Hackberry",
       "T": 2.75,
       "W": null,
-      "L": 62,
+      "L": 62.0,
       "price": 50,
       "priceLabel": "$50",
-      "notes": "Width not listed on source.",
+      "notes": "",
       "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"
     },
     {
@@ -198,7 +218,7 @@
     },
     {
       "vendor": "tree_trunk",
-      "name": "Elm Slab Cookie / End-grain Piece",
+      "name": "Elm Slab Cookie/End-grain Piece",
       "species": "Elm",
       "T": 2.5,
       "W": 11.25,
@@ -210,11 +230,11 @@
     },
     {
       "vendor": "tree_trunk",
-      "name": "Elm Slab Cookie / End-grain Piece",
+      "name": "Elm Slab Cookie/End-grain Piece",
       "species": "Elm",
       "T": 1.875,
       "W": 9.5,
-      "L": 16,
+      "L": 16.0,
       "price": 20,
       "priceLabel": "$20",
       "notes": "",
@@ -223,7 +243,7 @@
     {
       "vendor": "tree_trunk",
       "name": "Box Elder (Maple) Slab End-grain Piece",
-      "species": "Box Elder / Maple",
+      "species": "Box Elder (Maple)",
       "T": null,
       "W": null,
       "L": null,
@@ -234,46 +254,46 @@
     },
     {
       "vendor": "tree_trunk",
-      "name": "Apple Slabs Cookies / End-grain Pieces",
+      "name": "Apple Slabs Cookies/End-grain Pieces",
       "species": "Apple",
       "T": null,
       "W": null,
       "L": null,
       "price": 15,
-      "priceLabel": "$15 each",
-      "notes": "Sold by the piece",
+      "priceLabel": "$15",
+      "notes": "",
       "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"
     },
     {
       "vendor": "tree_trunk",
-      "name": "Apple Slabs Cookies / End-grain Pieces",
+      "name": "Apple Slabs Cookies/End-grain Pieces",
       "species": "Apple",
       "T": null,
       "W": null,
       "L": null,
-      "price": 10,
-      "priceLabel": "$15 & $10 each",
-      "notes": "Mixed pricing",
+      "price": 15,
+      "priceLabel": "$15",
+      "notes": "",
       "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"
     },
     {
       "vendor": "tree_trunk",
-      "name": "Bald Cypress Slab Cookie / End-grain Piece",
+      "name": "Bald Cypress Slab Cookie/End-grain Piece",
       "species": "Bald Cypress",
       "T": 5.75,
       "W": 16.5,
       "L": null,
       "price": 45,
       "priceLabel": "$45",
-      "notes": "Length not listed on source.",
+      "notes": "",
       "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"
     },
     {
       "vendor": "tree_trunk",
-      "name": "Siberian Elm Burl Cookie / End-grain Piece",
-      "species": "Siberian Elm (Burl)",
+      "name": "Siberian Elm Burl Cookie/End-grain Piece",
+      "species": "Siberian Elm",
       "T": 2.75,
-      "W": 21,
+      "W": 21.0,
       "L": 22.25,
       "price": 135,
       "priceLabel": "$135",
@@ -282,8 +302,8 @@
     },
     {
       "vendor": "tree_trunk",
-      "name": "Siberian Elm Burl Cookie / End-grain Piece",
-      "species": "Siberian Elm (Burl)",
+      "name": "Siberian Elm Burl Cookie/End-grain Piece",
+      "species": "Siberian Elm",
       "T": 3.75,
       "W": 22.25,
       "L": 22.25,
@@ -294,11 +314,11 @@
     },
     {
       "vendor": "tree_trunk",
-      "name": "Siberian Elm Burl Cookie / End-grain Piece",
-      "species": "Siberian Elm (Burl)",
+      "name": "Siberian Elm Burl Cookie/End-grain Piece",
+      "species": "Siberian Elm",
       "T": 3.375,
-      "W": 23,
-      "L": 22,
+      "W": 23.0,
+      "L": 22.0,
       "price": 180,
       "priceLabel": "$180",
       "notes": "",
@@ -306,10 +326,10 @@
     },
     {
       "vendor": "tree_trunk",
-      "name": "Siberian Elm Burl Cookie / End-grain Piece",
-      "species": "Siberian Elm (Burl)",
+      "name": "Siberian Elm Burl Cookie/End-grain Piece",
+      "species": "Siberian Elm",
       "T": 2.75,
-      "W": 16,
+      "W": 16.0,
       "L": 19.75,
       "price": 100,
       "priceLabel": "$100",
@@ -318,85 +338,85 @@
     },
     {
       "vendor": "tree_trunk",
+      "name": "Red Oak Burl Cookie/End-grain Piece",
+      "species": "Red Oak",
+      "T": 3.5,
+      "W": 26.0,
+      "L": 24.0,
+      "price": 230,
+      "priceLabel": "$230",
+      "notes": "",
+      "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"
+    },
+    {
+      "vendor": "tree_trunk",
       "name": "Black Walnut Charcuterie Board",
-      "species": "Black Walnut (Finished)",
+      "species": "Black Walnut",
       "T": 0.75,
       "W": 10.25,
       "L": 17.5,
       "price": 150,
       "priceLabel": "$150",
-      "notes": "Highly figured. Beautiful crotch figure. Rubber feet.",
-      "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"
-    },
-    {
-      "vendor": "tree_trunk",
-      "name": "Weeping Cherry Charcuterie Board",
-      "species": "Weeping Cherry (Finished)",
-      "T": 2.125,
-      "W": 11,
-      "L": 20.375,
-      "price": 150,
-      "priceLabel": "$150",
-      "notes": "Highly figured with natural live-edge characteristics. Rubber feet.",
+      "notes": "",
       "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"
     },
     {
       "vendor": "tree_trunk",
       "name": "Weeping Cherry Live-edge Charcuterie Board",
-      "species": "Weeping Cherry (Finished)",
+      "species": "Weeping Cherry",
+      "T": 2.125,
+      "W": 11.0,
+      "L": 20.375,
+      "price": 150,
+      "priceLabel": "$150",
+      "notes": "",
+      "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"
+    },
+    {
+      "vendor": "tree_trunk",
+      "name": "Weeping Cherry Live-edge Charcuterie Board",
+      "species": "Weeping Cherry",
       "T": 1.625,
       "W": 11.125,
       "L": 22.375,
       "price": 150,
       "priceLabel": "$150",
-      "notes": "Unique shape. Rubber feet. Handle / hanging hole.",
+      "notes": "",
       "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"
     },
     {
       "vendor": "tree_trunk",
       "name": "Weeping Cherry Charcuterie Board",
-      "species": "Weeping Cherry (Finished)",
+      "species": "Weeping Cherry",
       "T": 1.5,
-      "W": 11,
+      "W": 11.0,
       "L": 20.875,
       "price": 150,
       "priceLabel": "$150",
-      "notes": "Gorgeous crotch grain, highly figured. Rubber feet.",
+      "notes": "",
       "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"
     },
     {
       "vendor": "tree_trunk",
-      "name": "Black Walnut Butcher Block / Charcuterie Board",
-      "species": "Black Walnut (Finished)",
+      "name": "Black Walnut Butcher Block/Charcuterie Board",
+      "species": "Black Walnut",
       "T": 2.25,
       "W": 18.375,
       "L": 9.25,
       "price": 225,
       "priceLabel": "$225",
-      "notes": "Hefty. Beautiful multi-toned grain. Rubber feet.",
+      "notes": "",
       "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"
     },
     {
       "vendor": "tree_trunk",
       "name": "Maple Live-edge Charcuterie Board",
-      "species": "Hard Maple (Finished)",
+      "species": "Maple",
       "T": 1.5,
-      "W": 10,
+      "W": 10.0,
       "L": 24.5,
       "price": 75,
       "priceLabel": "$75",
-      "notes": "Natural live-edge. Finished with food-grade tung oil.",
-      "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"
-    },
-    {
-      "vendor": "tree_trunk",
-      "name": "Sycamore Slab",
-      "species": "Sycamore",
-      "T": 1.25,
-      "W": 15.75,
-      "L": null,
-      "price": 40.0,
-      "priceLabel": "$40",
       "notes": "",
       "productUrl": "https://www.thetreetrunksawmillandwoodshop.com/shop"
     },
@@ -408,8 +428,8 @@
       "W": null,
       "L": null,
       "price": 3065,
-      "priceLabel": "$3,065",
-      "notes": "Live-edge. Small crack in bottom right; solid feathering top half. Drying — completion Fall 2027.",
+      "priceLabel": "$3065",
+      "notes": "Drying \u2014 dimensions not yet available",
       "productUrl": "https://www.bloomandjohnson.com/product/walnut-slab-w11025"
     },
     {
@@ -420,8 +440,8 @@
       "W": null,
       "L": null,
       "price": 2920,
-      "priceLabel": "$2,920",
-      "notes": "Live-edge. Solid feathering top half. Drying — completion Fall 2027.",
+      "priceLabel": "$2920",
+      "notes": "Drying \u2014 dimensions not yet available",
       "productUrl": "https://www.bloomandjohnson.com/product/walnut-slab-11125"
     },
     {
@@ -432,8 +452,8 @@
       "W": null,
       "L": null,
       "price": 1980,
-      "priceLabel": "$1,980",
-      "notes": "Live-edge. Drying — completion Fall 2027.",
+      "priceLabel": "$1980",
+      "notes": "Drying \u2014 dimensions not yet available",
       "productUrl": "https://www.bloomandjohnson.com/product/walnut-slab-11225"
     },
     {
@@ -444,8 +464,8 @@
       "W": null,
       "L": null,
       "price": 1430,
-      "priceLabel": "$1,430",
-      "notes": "Live-edge. Drying — completion Fall 2027.",
+      "priceLabel": "$1430",
+      "notes": "Drying \u2014 dimensions not yet available",
       "productUrl": "https://www.bloomandjohnson.com/product/walnut-slab-11325"
     },
     {
@@ -456,8 +476,8 @@
       "W": null,
       "L": null,
       "price": 3200,
-      "priceLabel": "$3,200",
-      "notes": "Live-edge. Drying — completion Fall 2027.",
+      "priceLabel": "$3200",
+      "notes": "Drying \u2014 dimensions not yet available",
       "productUrl": "https://www.bloomandjohnson.com/product/walnut-slab-w11425"
     },
     {
@@ -468,8 +488,8 @@
       "W": null,
       "L": null,
       "price": 3050,
-      "priceLabel": "$3,050",
-      "notes": "Live-edge. Drying — completion Fall 2027.",
+      "priceLabel": "$3050",
+      "notes": "Drying \u2014 dimensions not yet available",
       "productUrl": "https://www.bloomandjohnson.com/product/walnut-slab-w11525"
     },
     {
@@ -480,8 +500,8 @@
       "W": null,
       "L": null,
       "price": 2170,
-      "priceLabel": "$2,170",
-      "notes": "Live-edge. Drying — completion Fall 2027.",
+      "priceLabel": "$2170",
+      "notes": "Drying \u2014 dimensions not yet available",
       "productUrl": "https://www.bloomandjohnson.com/product/walnut-slab-w11625"
     },
     {
@@ -492,17 +512,17 @@
       "W": null,
       "L": null,
       "price": 1480,
-      "priceLabel": "$1,480",
-      "notes": "Live-edge. Drying — completion Fall 2027.",
+      "priceLabel": "$1480",
+      "notes": "Drying \u2014 dimensions not yet available",
       "productUrl": "https://www.bloomandjohnson.com/product/walnut-slab-w11725"
     },
     {
       "vendor": "bloom_johnson",
-      "name": "Ash Mantel #2004",
+      "name": "Ash Mantel 3.5\" x 7.75\" x 71\" #2004",
       "species": "Ash",
       "T": 3.5,
       "W": 7.75,
-      "L": 71,
+      "L": 71.0,
       "price": 400,
       "priceLabel": "$400",
       "notes": "",
@@ -510,11 +530,11 @@
     },
     {
       "vendor": "bloom_johnson",
-      "name": "Maple Mantel #2005",
+      "name": "Maple Mantel 4\" x 7.25\" x 74\" #2005",
       "species": "Maple",
-      "T": 4,
+      "T": 4.0,
       "W": 7.25,
-      "L": 74,
+      "L": 74.0,
       "price": 650,
       "priceLabel": "$650",
       "notes": "",
@@ -522,11 +542,11 @@
     },
     {
       "vendor": "bloom_johnson",
-      "name": "Ash Mantel #2006",
+      "name": "Ash Mantel 3\" x 9\" x 74\" #2006",
       "species": "Ash",
-      "T": 3,
-      "W": 9,
-      "L": 74,
+      "T": 3.0,
+      "W": 9.0,
+      "L": 74.0,
       "price": 580,
       "priceLabel": "$580",
       "notes": "",
@@ -534,11 +554,11 @@
     },
     {
       "vendor": "bloom_johnson",
-      "name": "Hickory Mantel #2007",
+      "name": "Hickory Mantel 4\" x 9\" x 75\" #2007",
       "species": "Hickory",
-      "T": 4,
-      "W": 9,
-      "L": 75,
+      "T": 4.0,
+      "W": 9.0,
+      "L": 75.0,
       "price": 650,
       "priceLabel": "$650",
       "notes": "",
@@ -546,11 +566,11 @@
     },
     {
       "vendor": "bloom_johnson",
-      "name": "Maple Mantel #2008",
+      "name": "Maple Mantel 5.25\" x 9.5\" x 75\" #2008",
       "species": "Maple",
       "T": 5.25,
       "W": 9.5,
-      "L": 75,
+      "L": 75.0,
       "price": 650,
       "priceLabel": "$650",
       "notes": "",
@@ -558,11 +578,11 @@
     },
     {
       "vendor": "bloom_johnson",
-      "name": "Ash Mantel #2009",
+      "name": "Ash Mantel 3.5\" X 8\" X 77\" #2009",
       "species": "Ash",
       "T": 3.5,
-      "W": 8,
-      "L": 77,
+      "W": 8.0,
+      "L": 77.0,
       "price": 550,
       "priceLabel": "$550",
       "notes": "",
@@ -570,23 +590,23 @@
     },
     {
       "vendor": "bloom_johnson",
-      "name": "Live Edge Beech Mantel #2010",
-      "species": "Beech",
+      "name": "Live Edge Beech Mantel 5.5\" x 9\" x 77\" #2010",
+      "species": "Unknown",
       "T": 5.5,
-      "W": 9,
-      "L": 77,
+      "W": 9.0,
+      "L": 77.0,
       "price": 780,
       "priceLabel": "$780",
-      "notes": "Live edge.",
+      "notes": "",
       "productUrl": "https://www.bloomandjohnson.com/product/live-edge-beech-mantel-5-5-x-9-x-77-2010"
     },
     {
       "vendor": "bloom_johnson",
-      "name": "Beech Mantel #2011",
-      "species": "Beech",
+      "name": "Beech Mantel 5.5\" x 9\" x 74\" #2011",
+      "species": "Unknown",
       "T": 5.5,
-      "W": 9,
-      "L": 74,
+      "W": 9.0,
+      "L": 74.0,
       "price": 800,
       "priceLabel": "$800",
       "notes": "",
@@ -596,73 +616,73 @@
       "vendor": "black_forest",
       "name": "374 Walnut Live Edge Slab",
       "species": "Walnut",
-      "T": 2.0,
-      "W": 10.0,
-      "L": 60.0,
-      "price": 185.0,
+      "T": 2,
+      "W": 10,
+      "L": 60,
+      "price": 185,
       "priceLabel": "$185",
-      "notes": "Walnut live edge slab 60in x 10in x 8/4in Flattened and kiln dried Free shipping",
-      "productUrl": "https://blackforestsawmill.com/products/374-walnut-live-edge-slab"
+      "notes": "Kiln dried. Flattened. Free shipping. Small Slabs",
+      "productUrl": "https://blackforestsawmill.com/collections/slabs/products/374-walnut-live-edge-slab"
     },
     {
       "vendor": "black_forest",
       "name": "393 Walnut Slab",
       "species": "Walnut",
-      "T": 1.75,
-      "W": 12.0,
-      "L": 37.0,
-      "price": 90.0,
+      "T": 1,
+      "W": 12,
+      "L": 37,
+      "price": 90,
       "priceLabel": "$90",
-      "notes": "walnut live edge 37in x 12in x 1 3/4in flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/393-walnut-slab"
+      "notes": "Kiln dried. Flattened",
+      "productUrl": "https://blackforestsawmill.com/collections/slabs/products/393-walnut-slab"
     },
     {
       "vendor": "black_forest",
       "name": "392W Walnut Live Edge Slab",
       "species": "Walnut",
-      "T": 2.0,
-      "W": 10.0,
-      "L": 39.0,
-      "price": 80.0,
+      "T": 2,
+      "W": 10,
+      "L": 39,
+      "price": 80,
       "priceLabel": "$80",
-      "notes": "walnut live edge 39in x 10in x 8/4in flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/392w-walnut-live-edge-slab"
+      "notes": "Kiln dried. Flattened. Live Edge Slabs",
+      "productUrl": "https://blackforestsawmill.com/collections/slabs/products/392w-walnut-live-edge-slab"
     },
     {
       "vendor": "black_forest",
       "name": "448 White Oak Slab",
       "species": "White Oak",
       "T": 2.5,
-      "W": 10.0,
-      "L": 43.0,
-      "price": 160.0,
+      "W": 10,
+      "L": 43,
+      "price": 160,
       "priceLabel": "$160",
-      "notes": "White Oak Slab with great, very unique Character 43in x 10in x 10/4 Flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/448-white-oak-slab"
+      "notes": "Kiln dried. Flattened",
+      "productUrl": "https://blackforestsawmill.com/collections/slabs/products/448-white-oak-slab"
     },
     {
       "vendor": "black_forest",
       "name": "37 Walnut live edge slab",
       "species": "Walnut",
-      "T": 2.75,
-      "W": 27.0,
-      "L": 70.0,
-      "price": 500.0,
+      "T": null,
+      "W": null,
+      "L": null,
+      "price": 500,
       "priceLabel": "$500",
-      "notes": "Walnut live edge slab 70in x 22w-27in x 11/4 Flattened and kiln dried Dimensions show ranges; using max of each.",
-      "productUrl": "https://blackforestsawmill.com/products/37-walnut-live-edge-slab"
+      "notes": "Kiln dried. Flattened",
+      "productUrl": "https://blackforestsawmill.com/collections/slabs/products/37-walnut-live-edge-slab"
     },
     {
       "vendor": "black_forest",
       "name": "391 Maple Slab",
       "species": "Maple",
       "T": 2.25,
-      "W": 14.0,
-      "L": 36.0,
-      "price": 130.0,
+      "W": 14,
+      "L": 36,
+      "price": 130,
       "priceLabel": "$130",
-      "notes": "maple live edge 36in x 14in x 9/4 flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/32-maple-slab"
+      "notes": "Kiln dried. Flattened",
+      "productUrl": "https://blackforestsawmill.com/collections/slabs/products/32-maple-slab"
     },
     {
       "vendor": "black_forest",
@@ -671,190 +691,190 @@
       "T": null,
       "W": null,
       "L": null,
-      "price": 240.0,
+      "price": 240,
       "priceLabel": "$240",
-      "notes": "maple live edge 47in x 16in-19in x 12/4in flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/copy-of-32-maple-slab"
+      "notes": "Kiln dried. Flattened",
+      "productUrl": "https://blackforestsawmill.com/collections/slabs/products/copy-of-32-maple-slab"
     },
     {
       "vendor": "black_forest",
       "name": "34 Maple Slab",
       "species": "Maple",
-      "T": 3.0,
-      "W": 13.0,
-      "L": 39.0,
-      "price": 190.0,
+      "T": 3,
+      "W": 13,
+      "L": 39,
+      "price": 190,
       "priceLabel": "$190",
-      "notes": "Curly ambrosia maple live edge 39in x 13in x 12/4 in flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/34-maple-slab"
+      "notes": "Kiln dried. Flattened",
+      "productUrl": "https://blackforestsawmill.com/collections/slabs/products/34-maple-slab"
     },
     {
       "vendor": "black_forest",
       "name": "403 Walnut live edge slab",
       "species": "Walnut",
       "T": 1.75,
-      "W": 9.0,
-      "L": 50.0,
-      "price": 110.0,
+      "W": 9,
+      "L": 50,
+      "price": 110,
       "priceLabel": "$110",
-      "notes": "Walnut live edge slab 50in x 9in x 7/4 Flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/403-walnut-live-edge-slab"
+      "notes": "Kiln dried. Flattened. Slabs",
+      "productUrl": "https://blackforestsawmill.com/collections/slabs/products/403-walnut-live-edge-slab"
     },
     {
       "vendor": "black_forest",
       "name": "456 Walnut live edge slab",
       "species": "Walnut",
       "T": 1.75,
-      "W": 12.0,
-      "L": 45.0,
-      "price": 100.0,
+      "W": 12,
+      "L": 45,
+      "price": 100,
       "priceLabel": "$100",
-      "notes": "Walnut live edge slab 45in x 12in x 7/4 Flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/456-walnut-live-edge-slab"
+      "notes": "Kiln dried. Flattened. Slabs",
+      "productUrl": "https://blackforestsawmill.com/collections/slabs/products/456-walnut-live-edge-slab"
     },
     {
       "vendor": "black_forest",
       "name": "483 Walnut live edge slab",
       "species": "Walnut",
-      "T": 2.0,
-      "W": 11.0,
-      "L": 36.0,
-      "price": 90.0,
+      "T": null,
+      "W": null,
+      "L": null,
+      "price": 90,
       "priceLabel": "$90",
-      "notes": "Walnut live edge slab 36in x 7-11in x 8/4 Flattened and kiln dried Dimensions show ranges; using max of each.",
-      "productUrl": "https://blackforestsawmill.com/products/483-walnut-live-edge-slab"
+      "notes": "Kiln dried. Flattened. Slabs",
+      "productUrl": "https://blackforestsawmill.com/collections/slabs/products/483-walnut-live-edge-slab"
     },
     {
       "vendor": "black_forest",
       "name": "859 Ash live edge slab",
       "species": "Ash",
-      "T": 2.0,
-      "W": 21.0,
-      "L": 55.0,
-      "price": 150.0,
+      "T": 2,
+      "W": 21,
+      "L": 55,
+      "price": 150,
       "priceLabel": "$150",
-      "notes": "Ash live edge slab 55in x 21in x 8/4 Flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/859-ash-live-edge-slab"
+      "notes": "Kiln dried. Flattened",
+      "productUrl": "https://blackforestsawmill.com/collections/slabs/products/859-ash-live-edge-slab"
     },
     {
       "vendor": "black_forest",
       "name": "854 Walnut live edge slab",
       "species": "Walnut",
       "T": 1.5,
-      "W": 16.0,
-      "L": 55.0,
-      "price": 130.0,
+      "W": 16,
+      "L": 55,
+      "price": 130,
       "priceLabel": "$130",
-      "notes": "Walnut live edge slab 55in x 16in x 6/4 Flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/854-walnut-live-edge-slab"
+      "notes": "Kiln dried. Flattened",
+      "productUrl": "https://blackforestsawmill.com/collections/slabs/products/854-walnut-live-edge-slab"
     },
     {
       "vendor": "black_forest",
       "name": "853 Walnut live edge slab",
       "species": "Walnut",
-      "T": 2.25,
-      "W": 20.0,
-      "L": 45.0,
-      "price": 220.0,
+      "T": null,
+      "W": null,
+      "L": null,
+      "price": 220,
       "priceLabel": "$220",
-      "notes": "Walnut live edge slab 45in x 15-20in x 9/4 Flattened and kiln dried Dimensions show ranges; using max of each.",
-      "productUrl": "https://blackforestsawmill.com/products/853-walnut-live-edge-slab"
+      "notes": "Kiln dried. Flattened",
+      "productUrl": "https://blackforestsawmill.com/collections/slabs/products/853-walnut-live-edge-slab"
     },
     {
       "vendor": "black_forest",
       "name": "850 Ash live edge slab",
       "species": "Ash",
-      "T": 2.0,
-      "W": 26.0,
-      "L": 45.0,
-      "price": 200.0,
+      "T": 2,
+      "W": 26,
+      "L": 45,
+      "price": 200,
       "priceLabel": "$200",
-      "notes": "Ash live edge slab 45in x 26in x 8/4 Flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/850-ash-live-edge-slab"
+      "notes": "Kiln dried. Flattened",
+      "productUrl": "https://blackforestsawmill.com/collections/slabs/products/850-ash-live-edge-slab"
     },
     {
       "vendor": "black_forest",
       "name": "849 Red Oak Slab",
-      "species": "Red Oak",
+      "species": "Oak",
       "T": 2.25,
-      "W": 19.0,
-      "L": 34.0,
-      "price": 120.0,
+      "W": 19,
+      "L": 34,
+      "price": 120,
       "priceLabel": "$120",
-      "notes": "Red Oak slab 34in x 19in x 9/4 Flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/849-red-oak-slab"
+      "notes": "Kiln dried. Flattened",
+      "productUrl": "https://blackforestsawmill.com/collections/slabs/products/849-red-oak-slab"
     },
     {
       "vendor": "black_forest",
       "name": "892 Cedar live edge slab",
       "species": "Cedar",
-      "T": 2.0,
-      "W": 10.0,
-      "L": 39.0,
-      "price": 75.0,
+      "T": 2,
+      "W": 10,
+      "L": 39,
+      "price": 75,
       "priceLabel": "$75",
-      "notes": "cedar live edge slab 39in x 10in x 8/4 Flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/copy-891-cedar-live-edge-slab"
+      "notes": "Kiln dried. Flattened",
+      "productUrl": "https://blackforestsawmill.com/collections/slabs/products/copy-891-cedar-live-edge-slab"
     },
     {
       "vendor": "black_forest",
       "name": "894 Cedar live edge slab",
       "species": "Cedar",
-      "T": 2.0,
-      "W": 12.0,
-      "L": 47.0,
-      "price": 125.0,
+      "T": 2,
+      "W": 12,
+      "L": 47,
+      "price": 125,
       "priceLabel": "$125",
-      "notes": "cedar live edge slab 47in x 12in x 8/4 Flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/copy-893-cedar-live-edge-slab"
+      "notes": "Kiln dried. Flattened",
+      "productUrl": "https://blackforestsawmill.com/collections/slabs/products/copy-893-cedar-live-edge-slab"
     },
     {
       "vendor": "black_forest",
       "name": "896 Cedar live edge slab",
       "species": "Cedar",
-      "T": 2.0,
-      "W": 17.0,
-      "L": 47.0,
-      "price": 140.0,
+      "T": 2,
+      "W": 17,
+      "L": 47,
+      "price": 140,
       "priceLabel": "$140",
-      "notes": "cedar live edge slab 47in x 17in x 8/4 Flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/copy-895-cedar-live-edge-slab"
+      "notes": "Kiln dried. Flattened",
+      "productUrl": "https://blackforestsawmill.com/collections/slabs/products/copy-895-cedar-live-edge-slab"
     },
     {
       "vendor": "black_forest",
       "name": "916 Walnut live edge slab",
       "species": "Walnut",
       "T": 2.5,
-      "W": 28.0,
-      "L": 16.0,
-      "price": 60.0,
+      "W": 16,
+      "L": 28,
+      "price": 60,
       "priceLabel": "$60",
-      "notes": "Walnut live edge slab 16in x 28in x 10/4 Flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/copy-915-walnut-live-edge-slab"
+      "notes": "Kiln dried. Flattened",
+      "productUrl": "https://blackforestsawmill.com/collections/slabs/products/copy-915-walnut-live-edge-slab"
     },
     {
       "vendor": "black_forest",
       "name": "984 Walnut live edge slab",
       "species": "Walnut",
-      "T": 2.0,
-      "W": 9.0,
-      "L": 73.0,
-      "price": 275.0,
+      "T": 2,
+      "W": 9,
+      "L": 73,
+      "price": 275,
       "priceLabel": "$275",
-      "notes": "Walnut live edge slab 2 bookmatched pieces 73in x 9in x 8/4 Flattened and kiln dried, s2s",
-      "productUrl": "https://blackforestsawmill.com/products/copy-983-walnut-live-edge-slab"
+      "notes": "Kiln dried. Flattened",
+      "productUrl": "https://blackforestsawmill.com/collections/slabs/products/copy-983-walnut-live-edge-slab"
     },
     {
       "vendor": "black_forest",
       "name": "1020 Walnut live edge slab",
       "species": "Walnut",
-      "T": 2.0,
-      "W": 15.0,
-      "L": 89.0,
-      "price": 400.0,
+      "T": 2,
+      "W": 15,
+      "L": 89,
+      "price": 400,
       "priceLabel": "$400",
-      "notes": "Walnut live edge slab 89in x 15in x 8/4 Flattened and kiln dried, s2s",
-      "productUrl": "https://blackforestsawmill.com/products/copy-1019-walnut-live-edge-slab"
+      "notes": "Kiln dried. Flattened",
+      "productUrl": "https://blackforestsawmill.com/collections/slabs/products/copy-1019-walnut-live-edge-slab"
     },
     {
       "vendor": "black_forest",
@@ -863,10 +883,10 @@
       "T": null,
       "W": null,
       "L": null,
-      "price": 300.0,
+      "price": 300,
       "priceLabel": "$300",
-      "notes": "Walnut live edge slab 70in x 10in to 16in x 7/4 Flattened and kiln dried, s2s",
-      "productUrl": "https://blackforestsawmill.com/products/copy-1021-walnut-live-edge-slab"
+      "notes": "Kiln dried. Flattened",
+      "productUrl": "https://blackforestsawmill.com/collections/slabs/products/copy-1021-walnut-live-edge-slab"
     },
     {
       "vendor": "black_forest",
@@ -875,22 +895,22 @@
       "T": null,
       "W": null,
       "L": null,
-      "price": 220.0,
+      "price": 220,
       "priceLabel": "$220",
-      "notes": "walnut live edge 60in x 15in to 20in x 10/4 flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/copy-1213-walnut-slab"
+      "notes": "Kiln dried. Flattened",
+      "productUrl": "https://blackforestsawmill.com/collections/slabs/products/copy-1213-walnut-slab"
     },
     {
       "vendor": "black_forest",
       "name": "1263 Walnut Slab",
       "species": "Walnut",
-      "T": 2.0,
-      "W": 11.5,
-      "L": 52.0,
-      "price": 150.0,
+      "T": null,
+      "W": null,
+      "L": null,
+      "price": 150,
       "priceLabel": "$150",
-      "notes": "walnut live edge 52in x 11 1/2in x 8/4 flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/1263-walnut-slab"
+      "notes": "Kiln dried. Flattened",
+      "productUrl": "https://blackforestsawmill.com/collections/slabs/products/1263-walnut-slab"
     },
     {
       "vendor": "black_forest",
@@ -899,10 +919,10 @@
       "T": null,
       "W": null,
       "L": null,
-      "price": 190.0,
+      "price": 190,
       "priceLabel": "$190",
-      "notes": "walnut live edge 55in x 12in - 19 x 7/4 flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/1260-walnut-slab"
+      "notes": "Kiln dried. Flattened",
+      "productUrl": "https://blackforestsawmill.com/collections/slabs/products/1260-walnut-slab"
     },
     {
       "vendor": "black_forest",
@@ -911,10 +931,10 @@
       "T": null,
       "W": null,
       "L": null,
-      "price": 200.0,
+      "price": 200,
       "priceLabel": "$200",
-      "notes": "walnut live edge 55in x 15in to 20in x 7/4 flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/1268-walnut-slab"
+      "notes": "Kiln dried. Flattened",
+      "productUrl": "https://blackforestsawmill.com/collections/slabs/products/1268-walnut-slab"
     },
     {
       "vendor": "black_forest",
@@ -923,730 +943,34 @@
       "T": null,
       "W": null,
       "L": null,
-      "price": 180.0,
+      "price": 180,
       "priceLabel": "$180",
-      "notes": "walnut live edge 57in x 12in to 15in x 7/4 flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/1269-walnut-slab"
+      "notes": "Kiln dried. Flattened",
+      "productUrl": "https://blackforestsawmill.com/collections/slabs/products/1269-walnut-slab"
     },
     {
       "vendor": "black_forest",
       "name": "1272 Walnut Slab",
       "species": "Walnut",
       "T": 1.75,
-      "W": 16.0,
-      "L": 42.0,
-      "price": 140.0,
+      "W": 16,
+      "L": 42,
+      "price": 140,
       "priceLabel": "$140",
-      "notes": "walnut live edge 42in x 16in x 7/4 flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/1272-walnut-slab"
+      "notes": "Kiln dried. Flattened",
+      "productUrl": "https://blackforestsawmill.com/collections/slabs/products/1272-walnut-slab"
     },
     {
       "vendor": "black_forest",
       "name": "1277 Walnut Slab",
       "species": "Walnut",
-      "T": 2.0,
-      "W": 14.0,
-      "L": 44.0,
-      "price": 120.0,
+      "T": 2,
+      "W": 14,
+      "L": 44,
+      "price": 120,
       "priceLabel": "$120",
-      "notes": "walnut live edge 44in x 14in x 8/4 flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/1277-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1282 Walnut Slab",
-      "species": "Walnut",
-      "T": null,
-      "W": null,
-      "L": null,
-      "price": 250.0,
-      "priceLabel": "$250",
-      "notes": "walnut live edge 58in x 13in to 20in x 9/4 flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/1282-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1288 Walnut Slab",
-      "species": "Walnut",
-      "T": null,
-      "W": null,
-      "L": null,
-      "price": 270.0,
-      "priceLabel": "$270",
-      "notes": "walnut live edge 54in x 14in to 20in x 9/4 flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/1288-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1393 Walnut live edge slab",
-      "species": "Walnut",
-      "T": 1.5,
-      "W": 9.0,
-      "L": 64.0,
-      "price": 120.0,
-      "priceLabel": "$120",
-      "notes": "Walnut live edge slab 64in x 9in x 6/4 Flattened and kiln dried, s2s,",
-      "productUrl": "https://blackforestsawmill.com/products/copy-1019-walnut-live-edge-slab-1"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1407 Walnut live edge slab",
-      "species": "Walnut",
-      "T": 1.75,
-      "W": 11.0,
-      "L": 48.0,
-      "price": 100.0,
-      "priceLabel": "$100",
-      "notes": "Walnut live edge slab 48in x 11in x 7/4 Flattened and kiln dried, s2s,",
-      "productUrl": "https://blackforestsawmill.com/products/1407-walnut-live-edge-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1410 White Oak live edge slab",
-      "species": "White Oak",
-      "T": 2.25,
-      "W": 24.0,
-      "L": 24.0,
-      "price": 100.0,
-      "priceLabel": "$100",
-      "notes": "White Oak live edge slab 24in x 24in x 9/4 Flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/1410-white-oak-live-edge-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1411 White Oak live edge slab",
-      "species": "White Oak",
-      "T": 2.0,
-      "W": 19.0,
-      "L": 48.0,
-      "price": 130.0,
-      "priceLabel": "$130",
-      "notes": "White Oak live edge slab 48in x 19in x 8/4 Flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/copy-1410-white-oak-live-edge-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1487 Maple curly ambrosia slab",
-      "species": "Maple (Ambrosia)",
-      "T": 1.25,
-      "W": 18.0,
-      "L": 39.0,
-      "price": 100.0,
-      "priceLabel": "$100",
-      "notes": "Maple live edge slab, curly, ambrosia 39in x 18in x 5/4 39in x 12in x 5/4 Flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/1487-maple-curly-ambrosia-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1511 Walnut Slab",
-      "species": "Walnut",
-      "T": 1.75,
-      "W": 11.0,
-      "L": 47.0,
-      "price": 70.0,
-      "priceLabel": "$70",
-      "notes": "walnut live edge 47in x 11in x 7/4 flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/1511-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1517 Walnut Slab",
-      "species": "Walnut",
-      "T": 1.75,
-      "W": 10.0,
-      "L": 47.0,
-      "price": 70.0,
-      "priceLabel": "$70",
-      "notes": "walnut live edge 47in x 10in x 7/4 flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/1517-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1518 Walnut Slab",
-      "species": "Walnut",
-      "T": 1.75,
-      "W": 10.0,
-      "L": 47.0,
-      "price": 75.0,
-      "priceLabel": "$75",
-      "notes": "walnut live edge 47in x 10in x 7/4 flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/1518-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1536 Walnut Slab",
-      "species": "Walnut",
-      "T": null,
-      "W": null,
-      "L": null,
-      "price": 250.0,
-      "priceLabel": "$250",
-      "notes": "walnut live edge 49in x 20in - 27in x 10/4 flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/1536-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1537 Walnut Slab",
-      "species": "Walnut",
-      "T": null,
-      "W": null,
-      "L": null,
-      "price": 225.0,
-      "priceLabel": "$225",
-      "notes": "walnut live edge 49in x 16in - 25in x 10/4 flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/copy-1536-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1538 Walnut Slab",
-      "species": "Walnut",
-      "T": null,
-      "W": null,
-      "L": null,
-      "price": 225.0,
-      "priceLabel": "$225",
-      "notes": "walnut live edge 49in x 16in - 23in x 10/4 flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/1538-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1553 Walnut Slab",
-      "species": "Walnut",
-      "T": 2.5,
-      "W": 26.0,
-      "L": 34.0,
-      "price": 300.0,
-      "priceLabel": "$300",
-      "notes": "walnut live edge 34in x 26in x 10/4 flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/1553-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1558 Walnut Slab",
-      "species": "Walnut",
-      "T": 2.25,
-      "W": 14.0,
-      "L": 61.0,
-      "price": 275.0,
-      "priceLabel": "$275",
-      "notes": "walnut live edge 61in x 14in x 9/4 flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/1558-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1559 Walnut Slab",
-      "species": "Walnut",
-      "T": 2.5,
-      "W": 35.0,
-      "L": 74.0,
-      "price": 480.0,
-      "priceLabel": "$480",
-      "notes": "Curly walnut live edge 74in x 17-35in x 10/4 flattened and kiln dried Very curly! Dimensions show ranges; using max of each.",
-      "productUrl": "https://blackforestsawmill.com/products/1559-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1572 Walnut Slab",
-      "species": "Walnut",
-      "T": 2.25,
-      "W": 13.0,
-      "L": 32.0,
-      "price": 100.0,
-      "priceLabel": "$100",
-      "notes": "walnut live edge 32in x 13in x 9/4 flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/1572-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1585 Walnut live edge slab",
-      "species": "Walnut",
-      "T": 2.0,
-      "W": 15.0,
-      "L": 30.0,
-      "price": 135.0,
-      "priceLabel": "$135",
-      "notes": "Walnut live edge slab 30in x 15in x 8/4 Flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/1585-walnut-live-edge-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1587 Walnut Slab",
-      "species": "Walnut",
-      "T": null,
-      "W": null,
-      "L": null,
-      "price": 80.0,
-      "priceLabel": "$80",
-      "notes": "walnut live edge cookie, sanded 16in flattened, SANDED and kiln dried, 11/4 great for epoxy, may break, split or crack during shipping, ALL SALES FINAL Cookie / end-grain piece.",
-      "productUrl": "https://blackforestsawmill.com/products/1587-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1588 Walnut Slab",
-      "species": "Walnut",
-      "T": null,
-      "W": null,
-      "L": null,
-      "price": 80.0,
-      "priceLabel": "$80",
-      "notes": "walnut live edge cookie, sanded 16in flattened, SANDED and kiln dried, 8/4 great for epoxy, may break, split or crack during shipping, ALL SALES FINAL Cookie / end-grain piece.",
-      "productUrl": "https://blackforestsawmill.com/products/1588-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1590 Walnut Slab",
-      "species": "Walnut",
-      "T": null,
-      "W": null,
-      "L": null,
-      "price": 80.0,
-      "priceLabel": "$80",
-      "notes": "walnut live edge cookie, sanded 16in, flattened, SANDED and kiln dried, 8/4, Great for Epoxy, May Break, Split or Crack during shipping, ALL SALES FINAL Cookie / end-grain piece.",
-      "productUrl": "https://blackforestsawmill.com/products/1590-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1591 Walnut Slab",
-      "species": "Walnut",
-      "T": null,
-      "W": null,
-      "L": null,
-      "price": 80.0,
-      "priceLabel": "$80",
-      "notes": "walnut live edge cookie, sanded 16in, flattened, SANDED and kiln dried, 8/4, Great for Epoxy, May Break, Split or Crack during shipping, ALL SALES FINAL Cookie / end-grain piece.",
-      "productUrl": "https://blackforestsawmill.com/products/1591-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1592 Walnut Slab",
-      "species": "Walnut",
-      "T": null,
-      "W": null,
-      "L": null,
-      "price": 80.0,
-      "priceLabel": "$80",
-      "notes": "walnut live edge cookie, sanded 16in, flattened, SANDED and kiln dried, 8/4, Great for Epoxy, May Break, Split or Crack during shipping, ALL SALES FINAL Cookie / end-grain piece.",
-      "productUrl": "https://blackforestsawmill.com/products/1592-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1609 Walnut Slab",
-      "species": "Walnut",
-      "T": null,
-      "W": null,
-      "L": null,
-      "price": 120.0,
-      "priceLabel": "$120",
-      "notes": "walnut live edge cookie, sanded 22in x 20in flattened, SANDED and kiln dried, 10/4, Great for Epoxy, May Break, Split or Crack during shipping, ALL SALES FINAL Cookie / end-grain piece.",
-      "productUrl": "https://blackforestsawmill.com/products/1609-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1610 Walnut Slab",
-      "species": "Walnut",
-      "T": 2.0,
-      "W": 15.0,
-      "L": 41.0,
-      "price": 150.0,
-      "priceLabel": "$150",
-      "notes": "walnut live edge 41in x 15in x 8/4 flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/1610-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1611 Walnut Slab",
-      "species": "Walnut",
-      "T": 2.0,
-      "W": 14.0,
-      "L": 44.0,
-      "price": 150.0,
-      "priceLabel": "$150",
-      "notes": "walnut live edge 44in x 14in x 8/4 flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/1611-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1612 Walnut Slab",
-      "species": "Walnut",
-      "T": 2.0,
-      "W": 12.0,
-      "L": 47.0,
-      "price": 150.0,
-      "priceLabel": "$150",
-      "notes": "walnut live edge 47in x 12in x 8/4 flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/1612-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1613 Walnut Slab",
-      "species": "Walnut",
-      "T": 2.0,
-      "W": 15.0,
-      "L": 46.0,
-      "price": 175.0,
-      "priceLabel": "$175",
-      "notes": "walnut live edge 46in x 15in x 8/4 flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/1613-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1614 Walnut Slab",
-      "species": "Walnut",
-      "T": 2.25,
-      "W": 9.0,
-      "L": 50.0,
-      "price": 130.0,
-      "priceLabel": "$130",
-      "notes": "walnut live edge 50in x 9in x 9/4 flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/1614-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1615 Walnut Slab",
-      "species": "Walnut",
-      "T": 2.0,
-      "W": 11.0,
-      "L": 36.0,
-      "price": 90.0,
-      "priceLabel": "$90",
-      "notes": "walnut live edge 36in x 11in x 8/4 flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/1615-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1617 Walnut Slab",
-      "species": "Walnut",
-      "T": 2.0,
-      "W": 12.0,
-      "L": 51.0,
-      "price": 160.0,
-      "priceLabel": "$160",
-      "notes": "walnut live edge 51in x 12in x 8/4 flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/1617-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1621 Maple curly ambrosia slab",
-      "species": "Maple (Ambrosia)",
-      "T": 1.25,
-      "W": 13.0,
-      "L": 35.0,
-      "price": 80.0,
-      "priceLabel": "$80",
-      "notes": "Maple live edge slab, curly, ambrosia 35in x 13in x 5/4 Flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/1621-maple-curly-ambrosia-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1627 Cherry live edge slab",
-      "species": "Cherry",
-      "T": 1.25,
-      "W": 25.0,
-      "L": 47.0,
-      "price": 200.0,
-      "priceLabel": "$200",
-      "notes": "Cherry live edge slab, sanded, highly figured, curly 47in x 20-25in x 5/4 Flattened, Sanded and kiln dried Dimensions show ranges; using max of each.",
-      "productUrl": "https://blackforestsawmill.com/products/1627-cherry-live-edge-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1632 Walnut Slab",
-      "species": "Walnut",
-      "T": 0.75,
-      "W": 13.0,
-      "L": 48.0,
-      "price": 75.0,
-      "priceLabel": "$75",
-      "notes": "walnut live edge 48in x 13in x 3/4 flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/1632-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1633 Walnut Slab",
-      "species": "Walnut",
-      "T": 1.75,
-      "W": 13.0,
-      "L": 65.0,
-      "price": 165.0,
-      "priceLabel": "$165",
-      "notes": "walnut live edge 65in x 13in x 7/4 flattened and kiln dried and sanded",
-      "productUrl": "https://blackforestsawmill.com/products/1633-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1639 Walnut Slab",
-      "species": "Walnut",
-      "T": 1.75,
-      "W": 11.0,
-      "L": 46.0,
-      "price": 80.0,
-      "priceLabel": "$80",
-      "notes": "walnut live edge 46in x 11in x 7/4 flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/1639-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1640 Cedar live edge slab",
-      "species": "Cedar",
-      "T": 2.5,
-      "W": 18.0,
-      "L": 26.0,
-      "price": 135.0,
-      "priceLabel": "$135",
-      "notes": "cedar live edge slab 26in x 18in x 10/4 Flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/1640-cedar-live-edge-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1641 Cedar live edge slab",
-      "species": "Cedar",
-      "T": 2.5,
-      "W": 20.0,
-      "L": 34.0,
-      "price": 160.0,
-      "priceLabel": "$160",
-      "notes": "cedar live edge slab 34in x 20in x 10/4 Flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/1641-cedar-live-edge-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1642 Maple curly slab",
-      "species": "Maple",
-      "T": 2.25,
-      "W": 22.0,
-      "L": 36.0,
-      "price": 180.0,
-      "priceLabel": "$180",
-      "notes": "Maple live edge slab, curly, nice figure 36in x 22in x 9/4 Flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/1642-maple-curly-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1644 Maple curly slab",
-      "species": "Maple",
-      "T": 2.25,
-      "W": 17.0,
-      "L": 36.0,
-      "price": 165.0,
-      "priceLabel": "$165",
-      "notes": "Maple live edge slab, curly, nice figure 36in x 17in x 9/4 Flattened and kiln dried highly figured",
-      "productUrl": "https://blackforestsawmill.com/products/1644-maple-curly-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1645 Walnut Slab",
-      "species": "Walnut",
-      "T": 2.0,
-      "W": 8.0,
-      "L": 52.0,
-      "price": 80.0,
-      "priceLabel": "$80",
-      "notes": "walnut board 52in x 8in x 8/4 flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/1645-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1646 Walnut Slab",
-      "species": "Walnut",
-      "T": 1.25,
-      "W": 12.0,
-      "L": 47.0,
-      "price": 80.0,
-      "priceLabel": "$80",
-      "notes": "walnut board 47in x 12in x 5/4 flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/1646-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1647 Walnut Slab",
-      "species": "Walnut",
-      "T": 1.75,
-      "W": 10.0,
-      "L": 48.0,
-      "price": 110.0,
-      "priceLabel": "$110",
-      "notes": "walnut board 48in x 10in x 7/4 flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/1647-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1648 Walnut Slab",
-      "species": "Walnut",
-      "T": 1.75,
-      "W": 10.0,
-      "L": 48.0,
-      "price": 110.0,
-      "priceLabel": "$110",
-      "notes": "walnut board 48in x 10in x 7/4 flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/1648-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1651 Walnut Slab",
-      "species": "Walnut",
-      "T": 2.5,
-      "W": 24.0,
-      "L": 22.0,
-      "price": 140.0,
-      "priceLabel": "$140",
-      "notes": "walnut board 22in x 24in x 10/4 flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/1645-walnut-slab-copy"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1652 Walnut Slab",
-      "species": "Walnut",
-      "T": 2.5,
-      "W": 15.0,
-      "L": 31.0,
-      "price": 150.0,
-      "priceLabel": "$150",
-      "notes": "walnut board 31in x 15in x 10/4 flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/1652-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1653 Walnut Slab",
-      "species": "Walnut",
-      "T": 2.75,
-      "W": 10.0,
-      "L": 28.0,
-      "price": 125.0,
-      "priceLabel": "$125",
-      "notes": "walnut board 28in x 10in x 11/4 flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/1653-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1654 Walnut Slab",
-      "species": "Walnut",
-      "T": 2.0,
-      "W": 16.0,
-      "L": 32.0,
-      "price": 175.0,
-      "priceLabel": "$175",
-      "notes": "walnut board, sanded 32in x 16in x 8/4 Sanded, flattened and kiln dried",
-      "productUrl": "https://blackforestsawmill.com/products/1654-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1655 Walnut Slab",
-      "species": "Walnut",
-      "T": 2.5,
-      "W": 8.0,
-      "L": 28.0,
-      "price": 80.0,
-      "priceLabel": "$80",
-      "notes": "walnut board, 28in x 8in x 10/4, flattened and kiln dried, s2s",
-      "productUrl": "https://blackforestsawmill.com/products/1655-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1656 Walnut Slab",
-      "species": "Walnut",
-      "T": 2.0,
-      "W": 12.0,
-      "L": 66.0,
-      "price": 165.0,
-      "priceLabel": "$165",
-      "notes": "walnut board, 66in x 12in x 8/4, flattened and kiln dried, s2s",
-      "productUrl": "https://blackforestsawmill.com/products/1656-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1657 Walnut Slab",
-      "species": "Walnut",
-      "T": 1.75,
-      "W": 9.0,
-      "L": 69.0,
-      "price": 150.0,
-      "priceLabel": "$150",
-      "notes": "walnut board, 69in x 9in x 7/4, flattened and kiln dried, s2s",
-      "productUrl": "https://blackforestsawmill.com/products/1657-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1658 Walnut Slab",
-      "species": "Walnut",
-      "T": 1.75,
-      "W": 14.0,
-      "L": 69.0,
-      "price": 160.0,
-      "priceLabel": "$160",
-      "notes": "walnut board, 69in x 14in x 7/4, flattened and kiln dried, s2s",
-      "productUrl": "https://blackforestsawmill.com/products/1658-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1659 Walnut Slab",
-      "species": "Walnut",
-      "T": 1.75,
-      "W": 10.0,
-      "L": 60.0,
-      "price": 150.0,
-      "priceLabel": "$150",
-      "notes": "walnut board, 60in x 10in x 7/4, flattened and kiln dried, s2s",
-      "productUrl": "https://blackforestsawmill.com/products/1659-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1660 Walnut Slab",
-      "species": "Walnut",
-      "T": 1.75,
-      "W": 9.0,
-      "L": 58.0,
-      "price": 150.0,
-      "priceLabel": "$150",
-      "notes": "walnut board, 58in x 9in x 7/4, flattened and kiln dried, s2s",
-      "productUrl": "https://blackforestsawmill.com/products/1660-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1661 Walnut Slab",
-      "species": "Walnut",
-      "T": 2.5,
-      "W": 14.0,
-      "L": 17.0,
-      "price": 50.0,
-      "priceLabel": "$50",
-      "notes": "walnut board, 17in x 14in x 10/4, flattened and kiln dried, s2s",
-      "productUrl": "https://blackforestsawmill.com/products/1661-walnut-slab"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1663 Red Oak DIY bundle",
-      "species": "Red Oak",
-      "T": null,
-      "W": null,
-      "L": null,
-      "price": 50.0,
-      "priceLabel": "$50",
-      "notes": "Red Oak 2 piece bundle, 25in x 8in, 26in x 8in, Flattened s2s and kiln dried, 7/4, Rift sawn",
-      "productUrl": "https://blackforestsawmill.com/products/163-red-oak-diy-bundle"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1664 Red Oak DIY bundle",
-      "species": "Red Oak",
-      "T": null,
-      "W": null,
-      "L": null,
-      "price": 70.0,
-      "priceLabel": "$70",
-      "notes": "Red Oak 3 piece bundle, 26in x 8in, 26in x 7in, 26in x 8in, Flattened s2s and kiln dried, 7/4, Rift sawn",
-      "productUrl": "https://blackforestsawmill.com/products/16634-red-oak-diy-bundle"
-    },
-    {
-      "vendor": "black_forest",
-      "name": "1665 Walnut Slab",
-      "species": "Walnut",
-      "T": 0.75,
-      "W": 10.0,
-      "L": 41.0,
-      "price": 50.0,
-      "priceLabel": "$50",
-      "notes": "walnut board, 41in x 10in x 3/4, flattened and kiln dried, s2s",
-      "productUrl": "https://blackforestsawmill.com/products/1665-walnut-slab"
+      "notes": "Kiln dried. Flattened",
+      "productUrl": "https://blackforestsawmill.com/collections/slabs/products/1277-walnut-slab"
     },
     {
       "vendor": "fb_marketplace",
@@ -1657,7 +981,7 @@
       "L": null,
       "price": 6,
       "priceLabel": "$6",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"hardwood\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"hardwood\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/960970686335497/"
     },
     {
@@ -1669,7 +993,7 @@
       "L": null,
       "price": 6,
       "priceLabel": "$6",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"hardwood\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"hardwood\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/2384611548680685/"
     },
     {
@@ -1681,7 +1005,7 @@
       "L": null,
       "price": 200,
       "priceLabel": "$200",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"hardwood\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"hardwood\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1208687048103584/"
     },
     {
@@ -1693,7 +1017,7 @@
       "L": null,
       "price": 40,
       "priceLabel": "$40",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"hardwood\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"hardwood\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/814164548075885/"
     },
     {
@@ -1705,19 +1029,19 @@
       "L": null,
       "price": 16,
       "priceLabel": "$16",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"hardwood\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"hardwood\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1245150687705274/"
     },
     {
       "vendor": "fb_marketplace",
-      "name": "Handmade Hardwood Cutting Board — Father & Son Woodworking Project",
+      "name": "Handmade Hardwood Cutting Board \u2014 Father & Son Woodworking Project",
       "species": "Hardwood (mixed)",
       "T": null,
       "W": null,
       "L": null,
       "price": 50,
       "priceLabel": "$50",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"hardwood\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"hardwood\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1303599301573979/"
     },
     {
@@ -1729,7 +1053,7 @@
       "L": null,
       "price": 120,
       "priceLabel": "$120",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"hardwood\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"hardwood\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/2041585256642390/"
     },
     {
@@ -1741,31 +1065,31 @@
       "L": null,
       "price": 5,
       "priceLabel": "$5",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1214249610035658/"
     },
     {
       "vendor": "fb_marketplace",
-      "name": "select grade white oak 6” wide tng",
+      "name": "select grade white oak 6\u201d wide tng",
       "species": "White Oak",
       "T": null,
       "W": null,
       "L": null,
       "price": 6,
       "priceLabel": "$6",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"hardwood\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"hardwood\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1447791527041254/"
     },
     {
       "vendor": "fb_marketplace",
-      "name": "Live Edge Black Walnut Slabs • Kiln Dried",
+      "name": "Live Edge Black Walnut Slabs \u2022 Kiln Dried",
       "species": "Black Walnut",
       "T": null,
       "W": null,
       "L": null,
       "price": 12,
       "priceLabel": "$12",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/2295732284168153/"
     },
     {
@@ -1777,19 +1101,19 @@
       "L": null,
       "price": 50,
       "priceLabel": "$50",
-      "notes": "Location: Huntersville, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Huntersville, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/26214628971511090/"
     },
     {
       "vendor": "fb_marketplace",
-      "name": "10-12' Live Edge Black Walnut Slabs • Kiln Dried",
+      "name": "10-12' Live Edge Black Walnut Slabs \u2022 Kiln Dried",
       "species": "Black Walnut",
       "T": null,
       "W": null,
       "L": null,
       "price": 12,
       "priceLabel": "$12",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1210479457738707/"
     },
     {
@@ -1801,7 +1125,7 @@
       "L": null,
       "price": 130,
       "priceLabel": "$130",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"live edge\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"live edge\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/2255421238607887/"
     },
     {
@@ -1813,7 +1137,7 @@
       "L": null,
       "price": 35,
       "priceLabel": "$35",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"hardwood\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"hardwood\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/917561607771579/"
     },
     {
@@ -1825,19 +1149,19 @@
       "L": null,
       "price": 500,
       "priceLabel": "$500",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1376610911159162/"
     },
     {
       "vendor": "fb_marketplace",
-      "name": "White Oak Select, 2 1/4” x 3/4” Solid 19.5 sq ft ONE BUNDLE",
+      "name": "White Oak Select, 2 1/4\u201d x 3/4\u201d Solid 19.5 sq ft ONE BUNDLE",
       "species": "White Oak",
       "T": null,
       "W": null,
       "L": null,
       "price": 45,
       "priceLabel": "$45",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"hardwood\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"hardwood\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/2059766338087316/"
     },
     {
@@ -1849,7 +1173,7 @@
       "L": null,
       "price": 145,
       "priceLabel": "$145",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"hardwood\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"hardwood\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1381938307008100/"
     },
     {
@@ -1861,19 +1185,19 @@
       "L": null,
       "price": 170,
       "priceLabel": "$170",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1770459227672073/"
     },
     {
       "vendor": "fb_marketplace",
-      "name": "Live Edge Black Walnut Slabs • Kiln Dried",
+      "name": "Live Edge Black Walnut Slabs \u2022 Kiln Dried",
       "species": "Black Walnut",
       "T": null,
       "W": null,
       "L": null,
       "price": 12,
       "priceLabel": "$12",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/991118050008258/"
     },
     {
@@ -1885,7 +1209,7 @@
       "L": null,
       "price": 20,
       "priceLabel": "$20",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"live edge\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"live edge\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1714920222848315/"
     },
     {
@@ -1897,7 +1221,7 @@
       "L": null,
       "price": 500,
       "priceLabel": "$500",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/2373694929802564/"
     },
     {
@@ -1909,7 +1233,7 @@
       "L": null,
       "price": 500,
       "priceLabel": "$500",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/28490204067247232/"
     },
     {
@@ -1921,7 +1245,7 @@
       "L": null,
       "price": 26,
       "priceLabel": "$26",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"live edge\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"live edge\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1647124709907350/"
     },
     {
@@ -1933,7 +1257,7 @@
       "L": null,
       "price": 900,
       "priceLabel": "$900",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"live edge\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"live edge\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1144504265403442/"
     },
     {
@@ -1945,7 +1269,7 @@
       "L": null,
       "price": 500,
       "priceLabel": "$500",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1506727217516867/"
     },
     {
@@ -1957,7 +1281,7 @@
       "L": null,
       "price": 500,
       "priceLabel": "$500",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"live edge\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"live edge\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1669783637542192/"
     },
     {
@@ -1969,7 +1293,7 @@
       "L": null,
       "price": 30,
       "priceLabel": "$30",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"live edge\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"live edge\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/926744806591374/"
     },
     {
@@ -1981,19 +1305,19 @@
       "L": null,
       "price": 500,
       "priceLabel": "$500",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/27188565084080448/"
     },
     {
       "vendor": "fb_marketplace",
-      "name": "Live Edge Black Walnut Slabs • Kiln Dried",
+      "name": "Live Edge Black Walnut Slabs \u2022 Kiln Dried",
       "species": "Black Walnut",
       "T": null,
       "W": null,
       "L": null,
       "price": 12,
       "priceLabel": "$12",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1991728058383085/"
     },
     {
@@ -2005,19 +1329,19 @@
       "L": null,
       "price": 125,
       "priceLabel": "$125",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"live edge\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"live edge\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1194777655949662/"
     },
     {
       "vendor": "fb_marketplace",
-      "name": "Live Edge Black Walnut • Kiln Dried",
+      "name": "Live Edge Black Walnut \u2022 Kiln Dried",
       "species": "Black Walnut",
       "T": null,
       "W": null,
       "L": null,
       "price": 12,
       "priceLabel": "$12",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/962240906162174/"
     },
     {
@@ -2029,7 +1353,7 @@
       "L": null,
       "price": 125,
       "priceLabel": "$125",
-      "notes": "Location: Huntersville, NC. Found via FB Marketplace search: \"live edge\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Huntersville, NC. Found via FB Marketplace search: \"live edge\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1936613996928693/"
     },
     {
@@ -2041,7 +1365,7 @@
       "L": null,
       "price": 100,
       "priceLabel": "$100",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"live edge\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"live edge\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1198956045776956/"
     },
     {
@@ -2053,7 +1377,7 @@
       "L": null,
       "price": 240,
       "priceLabel": "$240",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"live edge\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"live edge\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1648077903108881/"
     },
     {
@@ -2065,7 +1389,7 @@
       "L": null,
       "price": 130,
       "priceLabel": "$130",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"live edge\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"live edge\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1418159932777280/"
     },
     {
@@ -2077,7 +1401,7 @@
       "L": null,
       "price": 500,
       "priceLabel": "$500",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1577794156650897/"
     },
     {
@@ -2089,7 +1413,7 @@
       "L": null,
       "price": 2000,
       "priceLabel": "$2,000",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1520824549610799/"
     },
     {
@@ -2101,7 +1425,7 @@
       "L": null,
       "price": 10,
       "priceLabel": "$10",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"lumber\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"lumber\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/4328321564108760/"
     },
     {
@@ -2113,7 +1437,7 @@
       "L": null,
       "price": 20,
       "priceLabel": "$20",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"lumber\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"lumber\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/933654299270195/"
     },
     {
@@ -2125,7 +1449,7 @@
       "L": null,
       "price": 10,
       "priceLabel": "$10",
-      "notes": "Location: Fort Mill, SC. Found via FB Marketplace search: \"lumber\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Fort Mill, SC. Found via FB Marketplace search: \"lumber\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1825183634834978/"
     },
     {
@@ -2137,19 +1461,19 @@
       "L": null,
       "price": 300,
       "priceLabel": "$300",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"lumber\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"lumber\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1236163494831793/"
     },
     {
       "vendor": "fb_marketplace",
-      "name": "1x6x14' Yellow Pine T&G – Bundle Deal: $80 for 15 Boards",
+      "name": "1x6x14' Yellow Pine T&G \u2013 Bundle Deal: $80 for 15 Boards",
       "species": "Yellow Pine",
       "T": null,
       "W": null,
       "L": null,
       "price": 5,
       "priceLabel": "$5",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"lumber\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"lumber\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/2031171040998422/"
     },
     {
@@ -2161,7 +1485,7 @@
       "L": null,
       "price": 123,
       "priceLabel": "$123",
-      "notes": "Location: Fort Mill, SC. Found via FB Marketplace search: \"lumber\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Fort Mill, SC. Found via FB Marketplace search: \"lumber\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1508620737349388/"
     },
     {
@@ -2173,19 +1497,19 @@
       "L": null,
       "price": 16,
       "priceLabel": "$16",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"lumber\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"lumber\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1720649152233679/"
     },
     {
       "vendor": "fb_marketplace",
-      "name": "3/4” White Oak Plywood 4x8",
+      "name": "3/4\u201d White Oak Plywood 4x8",
       "species": "White Oak",
       "T": null,
       "W": null,
       "L": null,
       "price": 109,
       "priceLabel": "$109",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"lumber\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"lumber\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/4283323738548453/"
     },
     {
@@ -2197,7 +1521,7 @@
       "L": null,
       "price": 15,
       "priceLabel": "$15",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"lumber\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"lumber\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/903928075678307/"
     },
     {
@@ -2209,7 +1533,7 @@
       "L": null,
       "price": 285,
       "priceLabel": "$285",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"mantel\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"mantel\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/951146783988565/"
     },
     {
@@ -2221,7 +1545,7 @@
       "L": null,
       "price": 55,
       "priceLabel": "$55",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"mantel\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"mantel\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/4253730308274769/"
     },
     {
@@ -2233,7 +1557,7 @@
       "L": null,
       "price": 75,
       "priceLabel": "$75",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"mantel\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"mantel\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/838797862477861/"
     },
     {
@@ -2245,7 +1569,7 @@
       "L": null,
       "price": 285,
       "priceLabel": "$285",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"mantel\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"mantel\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1473664317049435/"
     },
     {
@@ -2257,7 +1581,7 @@
       "L": null,
       "price": 175,
       "priceLabel": "$175",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"mantel\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"mantel\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/2825461154482206/"
     },
     {
@@ -2269,7 +1593,7 @@
       "L": null,
       "price": 50,
       "priceLabel": "$50",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"mantel\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"mantel\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/829898796617216/"
     },
     {
@@ -2281,7 +1605,7 @@
       "L": null,
       "price": 100,
       "priceLabel": "$100",
-      "notes": "Location: Matthews, NC. Found via FB Marketplace search: \"mantel\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Matthews, NC. Found via FB Marketplace search: \"mantel\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/3279412292223293/"
     },
     {
@@ -2293,7 +1617,7 @@
       "L": null,
       "price": 275,
       "priceLabel": "$275",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"mantel\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"mantel\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/912475544713710/"
     },
     {
@@ -2305,7 +1629,7 @@
       "L": null,
       "price": 275,
       "priceLabel": "$275",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"mantel\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"mantel\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/2549507758754348/"
     },
     {
@@ -2317,7 +1641,7 @@
       "L": null,
       "price": 285,
       "priceLabel": "$285",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"mantel\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"mantel\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/818409390863664/"
     },
     {
@@ -2329,7 +1653,7 @@
       "L": null,
       "price": 270,
       "priceLabel": "$270",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"mantel\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"mantel\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/773256009035315/"
     },
     {
@@ -2341,19 +1665,19 @@
       "L": null,
       "price": 6,
       "priceLabel": "$6",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1271143341051660/"
     },
     {
       "vendor": "fb_marketplace",
-      "name": "Walnut 8ft long 25” inch $$249",
+      "name": "Walnut 8ft long 25\u201d inch $$249",
       "species": "Walnut",
       "T": null,
       "W": null,
       "L": null,
       "price": 245,
       "priceLabel": "$245",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/912486785156572/"
     },
     {
@@ -2365,7 +1689,7 @@
       "L": null,
       "price": 70,
       "priceLabel": "$70",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/2353822095129383/"
     },
     {
@@ -2377,7 +1701,7 @@
       "L": null,
       "price": 750,
       "priceLabel": "$750",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/885066224062367/"
     },
     {
@@ -2389,7 +1713,7 @@
       "L": null,
       "price": 985,
       "priceLabel": "$985",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1369905214714330/"
     },
     {
@@ -2401,43 +1725,43 @@
       "L": null,
       "price": 300,
       "priceLabel": "$300",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/2486978441756967/"
     },
     {
       "vendor": "fb_marketplace",
-      "name": "Walnut butcher block 8’ x 39” $449",
+      "name": "Walnut butcher block 8\u2019 x 39\u201d $449",
       "species": "Walnut",
       "T": null,
       "W": null,
       "L": null,
       "price": 449,
       "priceLabel": "$449",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1515196556610878/"
     },
     {
       "vendor": "fb_marketplace",
-      "name": "Walnut butcher block sale $299 8’x25”",
+      "name": "Walnut butcher block sale $299 8\u2019x25\u201d",
       "species": "Walnut",
       "T": null,
       "W": null,
       "L": null,
       "price": 299,
       "priceLabel": "$299",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1276604998013351/"
     },
     {
       "vendor": "fb_marketplace",
-      "name": "8’ x 13” slab",
+      "name": "8\u2019 x 13\u201d slab",
       "species": "Unknown",
       "T": null,
       "W": null,
       "L": null,
       "price": 100,
       "priceLabel": "$100",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/908145362062295/"
     },
     {
@@ -2449,7 +1773,7 @@
       "L": null,
       "price": 100,
       "priceLabel": "$100",
-      "notes": "Location: Harrisburg, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Harrisburg, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/2154691238718299/"
     },
     {
@@ -2461,19 +1785,19 @@
       "L": null,
       "price": 500,
       "priceLabel": "$500",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1491345239063302/"
     },
     {
       "vendor": "fb_marketplace",
-      "name": "6‘ x 39“ walnut butcher block $299",
+      "name": "6\u2018 x 39\u201c walnut butcher block $299",
       "species": "Walnut",
       "T": null,
       "W": null,
       "L": null,
       "price": 299,
       "priceLabel": "$299",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/2199320857568909/"
     },
     {
@@ -2485,7 +1809,7 @@
       "L": null,
       "price": 1485,
       "priceLabel": "$1,485",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1638732877413110/"
     },
     {
@@ -2497,31 +1821,31 @@
       "L": null,
       "price": 1285,
       "priceLabel": "$1,285",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/916364884731254/"
     },
     {
       "vendor": "fb_marketplace",
-      "name": "Walnut butcher block 12’ x 25” $479",
+      "name": "Walnut butcher block 12\u2019 x 25\u201d $479",
       "species": "Walnut",
       "T": null,
       "W": null,
       "L": null,
       "price": 479,
       "priceLabel": "$479",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/2506894363100595/"
     },
     {
       "vendor": "fb_marketplace",
-      "name": "Solid Softwood Slab – Floor Accent or Project Piece",
+      "name": "Solid Softwood Slab \u2013 Floor Accent or Project Piece",
       "species": "Unknown",
       "T": null,
       "W": null,
       "L": null,
       "price": 95,
       "priceLabel": "$95",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1248151614083210/"
     },
     {
@@ -2533,7 +1857,7 @@
       "L": null,
       "price": 500,
       "priceLabel": "$500",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"walnut slab\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1282559710519968/"
     },
     {
@@ -2545,7 +1869,7 @@
       "L": null,
       "price": 20,
       "priceLabel": "$20",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"wood\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"wood\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1265002768915838/"
     },
     {
@@ -2557,7 +1881,7 @@
       "L": null,
       "price": 10,
       "priceLabel": "$10",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"wood\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"wood\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1986877765271579/"
     },
     {
@@ -2569,7 +1893,7 @@
       "L": null,
       "price": 80,
       "priceLabel": "$80",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"wood\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"wood\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1364278818828357/"
     },
     {
@@ -2581,7 +1905,7 @@
       "L": null,
       "price": 10,
       "priceLabel": "$10",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"wood\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"wood\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/762752636623874/"
     },
     {
@@ -2593,19 +1917,19 @@
       "L": null,
       "price": 10,
       "priceLabel": "$10",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"wood\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"wood\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1636799194007454/"
     },
     {
       "vendor": "fb_marketplace",
-      "name": "3/4” Walnut Plywood 4x8",
+      "name": "3/4\u201d Walnut Plywood 4x8",
       "species": "Walnut",
       "T": null,
       "W": null,
       "L": null,
       "price": 115,
       "priceLabel": "$115",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"wood\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"wood\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1891761568081967/"
     },
     {
@@ -2617,7 +1941,7 @@
       "L": null,
       "price": 6,
       "priceLabel": "$6",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"wood\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"wood\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/806973135785628/"
     },
     {
@@ -2629,7 +1953,7 @@
       "L": null,
       "price": 123,
       "priceLabel": "$123",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"wood\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"wood\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/964746225933459/"
     },
     {
@@ -2641,7 +1965,7 @@
       "L": null,
       "price": 1234,
       "priceLabel": "$1,234",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"wood\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"wood\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1255285073439419/"
     },
     {
@@ -2653,7 +1977,7 @@
       "L": null,
       "price": 5,
       "priceLabel": "$5",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"wood\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"wood\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/924904190306582/"
     },
     {
@@ -2665,7 +1989,7 @@
       "L": null,
       "price": 120,
       "priceLabel": "$120",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"wood\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"wood\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/2322703381466505/"
     },
     {
@@ -2677,7 +2001,7 @@
       "L": null,
       "price": 170,
       "priceLabel": "$170",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"wood\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"wood\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1498728951930426/"
     },
     {
@@ -2689,7 +2013,7 @@
       "L": null,
       "price": 870,
       "priceLabel": "$870",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"wood\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"wood\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/919475224380683/"
     },
     {
@@ -2701,7 +2025,7 @@
       "L": null,
       "price": 16,
       "priceLabel": "$16",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"wood\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"wood\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/2734562406929963/"
     },
     {
@@ -2713,7 +2037,7 @@
       "L": null,
       "price": 80,
       "priceLabel": "$80",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"wood\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"wood\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/2630286720672783/"
     },
     {
@@ -2725,7 +2049,7 @@
       "L": null,
       "price": 25,
       "priceLabel": "$25",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"wood\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"wood\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1905690076979824/"
     },
     {
@@ -2737,7 +2061,7 @@
       "L": null,
       "price": 24,
       "priceLabel": "$24",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"wood\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"wood\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/3409860462504429/"
     },
     {
@@ -2749,7 +2073,7 @@
       "L": null,
       "price": 110,
       "priceLabel": "$110",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"wood\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"wood\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/1409908597272355/"
     },
     {
@@ -2761,7 +2085,7 @@
       "L": null,
       "price": 25,
       "priceLabel": "$25",
-      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"wood\". Peer-to-peer listing — no parseable dimensions.",
+      "notes": "Location: Charlotte, NC. Found via FB Marketplace search: \"wood\". Peer-to-peer listing \u2014 no parseable dimensions.",
       "productUrl": "https://www.facebook.com/marketplace/item/909073212011818/"
     }
   ]
